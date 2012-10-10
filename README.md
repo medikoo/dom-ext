@@ -17,6 +17,12 @@ For browser, you can create custom toolset with help of
 
 # API
 
+## Document extensions
+
+### isDocument(x)
+
+Whether object is an instance of DOM Document
+
 ## DocumentFragment extensions
 
 ### isDocumentFragment(x)
