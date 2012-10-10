@@ -23,6 +23,10 @@ For browser, you can create custom toolset with help of
 
 Whether object is an instance of DOM Document
 
+### validDocument(x)
+
+If given object is not DOM Document throw TypeError in other case return it.
+
 ## DocumentFragment extensions
 
 ### isDocumentFragment(x)
