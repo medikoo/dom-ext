@@ -19,6 +19,7 @@
     "jquery"
   ],
   "devDependencies": {
+    "jsdom": "~0.2.15",
     "tad": "0.1.x"
   },
   "author": "Mariusz Nowak <medikoo+dom-ext@medikoo.com>",
