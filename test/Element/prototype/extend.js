@@ -27,14 +27,14 @@ module.exports = function (t, a) {
 
 	el3 = document.createElement('form');
 	t.call(el3, el1, el2);
-	a(el3.nodeName, 'form', "With children: NodeName");
+	a(el3.nodeName.toLowerCase(), 'form', "With children: NodeName");
 	a(el3.nodeType, 1, "With children: NodeType");
 	a.deep(toArray(el3.childNodes), [el1, el2],
 		"With children: Children");
 
 	el4 = document.createElement('section');
 	el4 = t.call(el4, { 'class': 'bar' }, el3, el2);
-	a(el4.nodeName, 'section', "With attrs & children: NodeName");
+	a(el4.nodeName.toLowerCase(), 'section', "With attrs & children: NodeName");
 	a(el4.nodeType, 1, "With attrs & children: NodeType");
 	a(el4.getAttribute('class'), 'bar', "With attrs & children: Attribute");
 	a.deep(toArray(el4.childNodes), [el3, el2],
