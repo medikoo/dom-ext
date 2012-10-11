@@ -9,11 +9,21 @@ module.exports = function (t, a) {
 
 	el1 = document.createElement('p');
 	el2 = document.createElement('div');
-	el2 = t.call(el2, { 'class': 'test', onclick: fn });
+	el2 = t.call(el2, { 'class': 'test', onclick: fn, foo: true, bar: false
+		  , other: null, another: undefined });
 
 	a(el2.childNodes.length, 0, "With attrs: Children");
 	a(el2.getAttribute('class'), 'test', "With attrs: Attribute");
 	a(el2.onclick, fn, "With attrs: Listener attribute");
+	a(el2.getAttribute('foo'), 'foo', "With attrs: Boolean (true) attribute");
+	a(el2.hasAttribute('bar'), false, "With attrs: Boolean (false) attribute");
+	a(el2.hasAttribute('other'), false, "With attrs: Boolean (false) attribute");
+	a(el2.hasAttribute('another'), false, "With attrs: Boolean (false) attribute");
+
+	t.call(el2, { 'class': false, onclick: null });
+	a(el2.hasAttribute('class'), false, "Cancelled attribute (false)");
+	a(el2.hasAttribute('onclick'), false, "Cancelled attribute (null)");
+	a(el2.onclick, undefined, "Cancelled function property");
 
 	el3 = document.createElement('form');
 	t.call(el3, el1, el2);
