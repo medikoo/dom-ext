@@ -9,7 +9,7 @@ module.exports = function (t, a) {
 	t.call(document, 'p { color: red; }');
 
 	style = last.call(document.childNodes[0].getElementsByTagName('style'));
-	a(style.textContent, 'p { color: red; }', "String");
+	a(style.textContent.trim(), 'p { color: red; }', "String");
 
 	t.call(document,
 		{ form: { padding: '10px 10px', backgroundColor: 'olive' } });
