@@ -8,7 +8,7 @@ module.exports = function (t, a) {
 
 	t.call(document, 'p { color: red; }');
 
-	style = last.call(document.childNodes[0].getElementsByTagName('style'));
+	style = last.call(document.head.getElementsByTagName('style'));
 	a(style.textContent.trim(), 'p { color: red; }', "String");
 
 	t.call(document,
