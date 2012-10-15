@@ -7,4 +7,3 @@ module.exports = function (t, a) {
 	t.call(document);
 	a.not(pre, document.body.className);
 };
-

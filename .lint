@@ -29,4 +29,5 @@ jshint.smarttabs
 jshint.eqnull
 jshint.expr
 
-jshint.global+ document
+jslint_medikoo.predef+ document, setTimeout
+jshint.global+ document, setTimeout

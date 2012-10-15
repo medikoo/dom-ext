@@ -18,7 +18,8 @@ module.exports = function (t, a) {
 	a(el2.getAttribute('foo'), 'foo', "With attrs: Boolean (true) attribute");
 	a(el2.hasAttribute('bar'), false, "With attrs: Boolean (false) attribute");
 	a(el2.hasAttribute('other'), false, "With attrs: Boolean (false) attribute");
-	a(el2.hasAttribute('another'), false, "With attrs: Boolean (false) attribute");
+	a(el2.hasAttribute('another'), false,
+		"With attrs: Boolean (false) attribute");
 
 	t.call(el2, { 'class': false, onclick: null });
 	a(el2.hasAttribute('class'), false, "Cancelled attribute (false)");

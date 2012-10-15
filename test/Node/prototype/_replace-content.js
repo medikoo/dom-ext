@@ -13,7 +13,6 @@ module.exports = function (t, a) {
 	col1 = [document.createElement('span'), 'raz', document.createElement('b')];
 	col2 = [document.createElement('div'), document.createElement('p')];
 
-
 	a(t.call(el, col1), el, "Returns self");
 	col1.splice(1, 1, el.childNodes[1]);
 	a.deep(toArray(el.childNodes), col1, "Replace #1");

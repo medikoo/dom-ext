@@ -3,7 +3,7 @@
 var toArray = require('es5-ext/lib/Array/from');
 
 module.exports = function (t, a) {
-	var el1, el2, el3, fn = function () {}, node, c1, c2;
+	var el1, el2, el3, node, c1, c2;
 
 	if (typeof document === 'undefined') return;
 
