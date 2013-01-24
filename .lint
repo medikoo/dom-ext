@@ -4,6 +4,7 @@ jslint_medikoo.indent 2
 jslint_medikoo.maxlen 80
 es5
 
+jslint_medikoo.nomen
 jslint_medikoo.tabs
 jslint_medikoo.module
 jslint_medikoo.plusplus
