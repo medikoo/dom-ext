@@ -24,7 +24,7 @@ module.exports = function (t, a) {
 	t.call(el2, { 'class': false, onclick: null });
 	a(el2.hasAttribute('class'), false, "Cancelled attribute (false)");
 	a(el2.hasAttribute('onclick'), false, "Cancelled attribute (null)");
-	a(el2.onclick, undefined, "Cancelled function property");
+	a(el2.onclick, null, "Cancelled function property");
 
 	el3 = document.createElement('form');
 	t.call(el3, el1, el2);
