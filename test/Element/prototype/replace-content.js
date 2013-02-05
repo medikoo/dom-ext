@@ -3,15 +3,27 @@
 var toArray = require('es5-ext/lib/Array/from');
 
 module.exports = function (t, a) {
-	var el1, els;
+	var el, child1, child2, child3, list;
 	if (typeof document === 'undefined') return;
 
-	el1 = document.createElement('p');
-	el1.appendChild(document.createElement('span'));
-	el1.appendChild(document.createElement('span'));
+	el = document.createElement('p');
+	child1 = document.createElement('span');
+	child2 = document.createElement('span');
+	child3 = document.createElement('span');
 
-	els = [document.createElement('b'), document.createElement('b')];
+	list = [child1, child3, child2];
+	t.call(el, list);
+	a.deep(toArray(el.childNodes), list, "Init");
 
-	a(t.apply(el1, els), el1, "Return");
-	a.deep(toArray(el1.childNodes), els, "Content");
+	list = [child1, child3, child2];
+	t.call(el, list);
+	a.deep(toArray(el.childNodes), list, "Reorder");
+
+	list = [child1, child2];
+	t.call(el, list);
+	a.deep(toArray(el.childNodes), list, "Remove");
+
+	list = [child2, child1, child3];
+	t.call(el, list);
+	a.deep(toArray(el.childNodes), list, "Add");
 };
