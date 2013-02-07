@@ -8,7 +8,7 @@ module.exports = function (t, a) {
 	el1 = document.createElement('p');
 	el2 = document.createElement('div');
 
-	nodes = t.call(document, el2, el1, 'Test');
+	nodes = t.call(document, el2, el1, 'Test', null);
 	a(nodes[2].nodeType, 3, "String to Text node");
 	a(nodes[2].data, 'Test', "String to Text node: content");
 	a.deep(nodes, [el2, el1, nodes[2]], "Children");
