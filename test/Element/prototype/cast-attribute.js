@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function (t, a) {
-	var el, fn = function () {};
+	var el, fn = function () {}, attr;
 
 	if (typeof document === 'undefined') return;
 
@@ -13,6 +13,10 @@ module.exports = function (t, a) {
 	t.call(el, 'other', null);
 	t.call(el, 'another', undefined);
 
+	attr = document.createAttribute('attrvalue');
+	attr.value = 'lorem';
+	t.call(el, 'attrfalse', attr);
+
 	a(el.childNodes.length, 0, "Children");
 	a(el.getAttribute('lorem'), 'test', "Regular");
 	a(el.getAttribute('onclick'), 'onclick', "Listener: Attribute");
@@ -23,6 +27,8 @@ module.exports = function (t, a) {
 	a(el.bar, false, "Boolean (false): Value");
 	a(el.hasAttribute('other'), false, "Null:  Undefined");
 	a(el.hasAttribute('another'), false, "Undefined: Undefined");
+	a(el.getAttribute('attrvalue'), 'lorem', "Attribute object");
+	a(el.hasAttribute('attrfalse'), false, "Attribute object: name");
 
 	t.call(el, 'lorem', false);
 	t.call(el, 'onclick', null);

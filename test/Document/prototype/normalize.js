@@ -1,17 +1,18 @@
 'use strict';
 
 module.exports = function (t, a) {
-	var el1, el2, el3, nodes, c1, c2;
+	var el1, el2, el3, nodes, c1, c2, attr;
 
 	if (typeof document === 'undefined') return;
 
 	el1 = document.createElement('p');
 	el2 = document.createElement('div');
+	attr = document.createAttribute('raz');
 
-	nodes = t.call(document, el2, el1, 'Test', null);
+	nodes = t.call(document, el2, el1, 'Test', null, attr);
 	a(nodes[2].nodeType, 3, "String to Text node");
 	a(nodes[2].data, 'Test', "String to Text node: content");
-	a.deep(nodes, [el2, el1, nodes[2]], "Children");
+	a.deep(nodes, [el2, el1, nodes[2], attr], "Children");
 
 	el3 = document.createElement('p');
 	c1 = el3.appendChild(document.createElement('span'));
