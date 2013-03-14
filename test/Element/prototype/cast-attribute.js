@@ -32,7 +32,7 @@ module.exports = function (t, a) {
 
 	t.call(el, 'lorem', false);
 	t.call(el, 'onclick', null);
-	a(el.hasAttribute('class'), false, "Cancelled attribute (false)");
+	a(el.hasAttribute('lorem'), false, "Cancelled attribute (false)");
 	a(el.hasAttribute('onclick'), false, "Cancelled attribute (null)");
 	a(el.onclick, null, "Cancelled function property");
 };
