@@ -29,5 +29,8 @@ jshint.smarttabs
 jshint.eqnull
 jshint.expr
 
-jslint_medikoo.predef+ document, setTimeout
-jshint.global+ document, setTimeout
+jslint_medikoo.predef+ document, setTimeout, clearTimeout
+jshint.global+ document, setTimeout, clearTimeout
+
+./lib/HTMLImageElement/prototype/promise.js
+jslint_medikoo.bitwise
