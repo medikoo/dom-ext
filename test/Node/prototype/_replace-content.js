@@ -23,4 +23,6 @@ module.exports = function (t, a) {
 
 	a.deep(toArray(t.call(el, el2.childNodes).childNodes), [c1, c2],
 		"Replace from childNodes");
+
+	a.deep(t.call(el).childNodes, [], "Empty");
 };
