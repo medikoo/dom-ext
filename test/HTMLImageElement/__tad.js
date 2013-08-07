@@ -4,7 +4,7 @@ var document;
 
 try {
 	document = require('jsdom').jsdom();
-} catch (e) {}
+} catch (ignore) {}
 
 exports.context = document ? {
 	document: document,
