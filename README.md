@@ -39,6 +39,6 @@ Whether object is an instance of DocumentFragment
 
 Whether object represents any DOM node
 
-## Tests [![Build Status](https://secure.travis-ci.org/medikoo/dom-ext.png?branch=master)](https://secure.travis-ci.org/medikoo/dom-ext)
+## Tests [![Build Status](https://api.travis-ci.org/medikoo/dom-ext.png?branch=master)](https://travis-ci.org/medikoo/dom-ext)
 
 	$ npm test
