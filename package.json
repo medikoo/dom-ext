@@ -20,9 +20,9 @@
   ],
   "dependencies": {
     "deferred": "~0.6.5",
-    "es5-ext": "git://github.com/medikoo/es5-ext",
-    "memoizee": "git://github.com/medikoo/memoize",
-    "time-uuid": "git://github.com/medikoo/time-uuid"
+    "es5-ext": "git://github.com/medikoo/es5-ext.git",
+    "memoizee": "git://github.com/medikoo/memoize.git",
+    "time-uuid": "git://github.com/medikoo/time-uuid.git"
   },
   "devDependencies": {
     "jsdom": "~0.8.4",

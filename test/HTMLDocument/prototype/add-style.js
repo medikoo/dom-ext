@@ -1,6 +1,6 @@
 'use strict';
 
-var last = require('es5-ext/lib/Array/prototype/last');
+var last = require('es5-ext/array/#/last');
 
 module.exports = function (t, a) {
 	var style;
