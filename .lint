@@ -13,5 +13,5 @@ plusplus
 
 predef+ document, setTimeout, clearTimeout
 
-./lib/HTMLImageElement/prototype/promise.js
+./html-image-element/#/promise.js
 bitwise
