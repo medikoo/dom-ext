@@ -12,6 +12,7 @@ module.exports = {
 	htmlImageElement:    require('./html-image-element'),
 	htmlLiElement:       require('./html-li-element'),
 	htmlOptGroupElement: require('./html-opt-group-element'),
+	htmlOptionElement:   require('./html-option-element'),
 	htmlTableRowElement: require('./html-table-row-element'),
 	node:                require('./node'),
 	text:                require('./text')
