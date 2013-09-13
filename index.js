@@ -11,6 +11,7 @@ module.exports = {
 	htmlFormElement:     require('./html-form-element'),
 	htmlImageElement:    require('./html-image-element'),
 	htmlLiElement:       require('./html-li-element'),
+	htmlOptGroupElement: require('./html-opt-group-element'),
 	htmlTableRowElement: require('./html-table-row-element'),
 	node:                require('./node'),
 	text:                require('./text')
