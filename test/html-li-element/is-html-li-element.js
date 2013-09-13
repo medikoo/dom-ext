@@ -8,7 +8,7 @@ module.exports = function (t, a) {
 	if (typeof document !== 'undefined') {
 		a(t(document.createDocumentFragment()), false, "DocumentFragment");
 		a(t(document.createElement('div')), false, "Element");
-		a(t(document.createElement('li')), true, "Form");
+		a(t(document.createElement('li')), true, "Li");
 		a(t(document.createTextNode('content')), false, "Text node");
 		a(t(document.createComment('content')), false, "Comment node");
 		a(t(document), false, "Document node");
