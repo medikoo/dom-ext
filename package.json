@@ -19,6 +19,7 @@
     "jquery"
   ],
   "dependencies": {
+    "d": "git://github.com/medikoo/d.git",
     "deferred": "~0.6.5",
     "es5-ext": "git://github.com/medikoo/es5-ext.git",
     "memoizee": "git://github.com/medikoo/memoize.git",
