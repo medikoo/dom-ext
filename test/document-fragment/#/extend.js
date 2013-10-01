@@ -1,6 +1,6 @@
 'use strict';
 
-var toArray = require('es5-ext/array/from');
+var aFrom = require('es5-ext/array/from');
 
 module.exports = function (t, a) {
 	var el1, el2, node, df;
@@ -16,6 +16,5 @@ module.exports = function (t, a) {
 	node = df.childNodes[1];
 	a(node.nodeType, 3, "String to Text node");
 	a(node.data, 'foo:bar', "String to Text node: content");
-	a.deep(toArray(df.childNodes), [el1, node, el2],
-		"Children");
+	a.deep(aFrom(df.childNodes), [el1, node, el2], "Children");
 };

@@ -1,6 +1,6 @@
 'use strict';
 
-var toArray = require('es5-ext/array/from');
+var aFrom = require('es5-ext/array/from');
 
 module.exports = function (t, a) {
 	var el, child1, child2, child3, list;
@@ -13,17 +13,17 @@ module.exports = function (t, a) {
 
 	list = [child1, child3, child2];
 	t.call(el, list);
-	a.deep(toArray(el.childNodes), list, "Init");
+	a.deep(aFrom(el.childNodes), list, "Init");
 
 	list = [child1, child3, child2];
 	t.call(el, list);
-	a.deep(toArray(el.childNodes), list, "Reorder");
+	a.deep(aFrom(el.childNodes), list, "Reorder");
 
 	list = [child1, child2];
 	t.call(el, list);
-	a.deep(toArray(el.childNodes), list, "Remove");
+	a.deep(aFrom(el.childNodes), list, "Remove");
 
 	list = [child2, child1, child3];
 	t.call(el, list);
-	a.deep(toArray(el.childNodes), list, "Add");
+	a.deep(aFrom(el.childNodes), list, "Add");
 };

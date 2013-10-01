@@ -1,6 +1,6 @@
 'use strict';
 
-var toArray    = require('es5-ext/array/from')
+var toArray    = require('es5-ext/array/to-array')
   , isCallable = require('es5-ext/object/is-callable')
   , isList     = require('es5-ext/object/is-list')
   , isObject   = require('es5-ext/object/is-object')

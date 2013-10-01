@@ -1,6 +1,6 @@
 'use strict';
 
-var toArray = require('es5-ext/array/from');
+var aFrom = require('es5-ext/array/from');
 
 module.exports = function (t, a) {
 	var el1;
@@ -11,5 +11,5 @@ module.exports = function (t, a) {
 	el1.appendChild(document.createElement('span'));
 
 	a(t.call(el1), el1, "Return");
-	a.deep(toArray(el1.childNodes), [], "Clear");
+	a.deep(aFrom(el1.childNodes), [], "Clear");
 };

@@ -1,6 +1,6 @@
 'use strict';
 
-var toArray = require('es5-ext/array/from');
+var aFrom = require('es5-ext/array/from');
 
 module.exports = function (t, a) {
 	var el, el2, col1, col2, c1, c2;
@@ -14,14 +14,14 @@ module.exports = function (t, a) {
 	col2 = [document.createElement('div'), document.createElement('p')];
 
 	a(t.call(el, col1), el, "Returns self");
-	a.deep(toArray(el.childNodes), col1, "Replace #1");
-	a.deep(toArray(t.call(el, col2).childNodes), col2, "Replace #2");
+	a.deep(aFrom(el.childNodes), col1, "Replace #1");
+	a.deep(aFrom(t.call(el, col2).childNodes), col2, "Replace #2");
 
 	el2 = document.createElement('p');
 	c1 = el2.appendChild(document.createElement('span'));
 	c2 = el2.appendChild(document.createElement('hr'));
 
-	a.deep(toArray(t.call(el, el2.childNodes).childNodes), [c1, c2],
+	a.deep(aFrom(t.call(el, el2.childNodes).childNodes), [c1, c2],
 		"Replace from childNodes");
 
 	a.deep(t.call(el).childNodes, [], "Empty");

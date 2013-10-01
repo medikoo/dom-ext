@@ -1,6 +1,6 @@
 'use strict';
 
-var toArray = require('es5-ext/array/from');
+var aFrom = require('es5-ext/array/from');
 
 module.exports = function (t, a) {
 	var el1, el2, el3, el4, fn = function () {}, node;
@@ -25,15 +25,13 @@ module.exports = function (t, a) {
 	el3 = t('form', el1, el2);
 	a(el3.nodeName.toLowerCase(), 'form', "With children: NodeName");
 	a(el3.nodeType, 1, "With children: NodeType");
-	a.deep(toArray(el3.childNodes), [el1, el2],
-		"With children: Children");
+	a.deep(aFrom(el3.childNodes), [el1, el2], "With children: Children");
 
 	el4 = t('section', { 'class': 'bar' }, el3, el2);
 	a(el4.nodeName.toLowerCase(), 'section', "With attrs & children: NodeName");
 	a(el4.nodeType, 1, "With attrs & children: NodeType");
 	a(el4.getAttribute('class'), 'bar', "With attrs & children: Attribute");
-	a.deep(toArray(el4.childNodes), [el3, el2],
-		"With attrs & children: Children");
+	a.deep(aFrom(el4.childNodes), [el3, el2], "With attrs & children: Children");
 
 	node = t('div', el2, 'Test').childNodes[1];
 	a(node.nodeType, 3, "String to Text node");
