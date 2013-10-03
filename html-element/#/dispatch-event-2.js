@@ -3,7 +3,7 @@
 
 'use strict';
 
-var extend  = require('es5-ext/object/extend')
+var assign  = require('es5-ext/object/assign-multiple')
   , forEach = require('es5-ext/object/for-each')
   , element = require('../valid-html-element')
 
@@ -20,7 +20,7 @@ defaultOptions = { pointerX: 0, pointerY: 0, button: 0, ctrlKey: false,
 
 module.exports = function (name/*, options */) {
 	var type, event, inputOptions = Object(arguments[1])
-	  , options = extend({}, defaultOptions, inputOptions);
+	  , options = assign({}, defaultOptions, inputOptions);
 	element(this);
 	if (mouseEvents.hasOwnProperty(name)) type = 'MouseEvents';
 	else if (htmlEvents.hasOwnProperty(name)) type = 'HTMLEvents';
