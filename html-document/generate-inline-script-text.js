@@ -3,7 +3,7 @@
 var isDate        = require('es5-ext/date/is-date')
   , validFunction = require('es5-ext/function/valid-function')
   , isPlainObject = require('es5-ext/object/is-plain-object')
-  , mapToArray    = require('es5-ext/object/map-to-array')
+  , toArray       = require('es5-ext/object/to-array')
   , isRegExp      = require('es5-ext/reg-exp/is-reg-exp')
   , repeat        = require('es5-ext/string/#/repeat')
 
@@ -50,7 +50,7 @@ convertValue = function (value, nest) {
 	if (isDate(value)) return 'new Date(' + value.getTime() + ')';
 	if (isPlainObject(value)) {
 		data = '{\n' + repeat.call('\t', nest + 1);
-		data += mapToArray(value, function (value, name) {
+		data += toArray(value, function (value, name) {
 			return stringify(name) + ': ' + convertValue(value, nest + 1);
 		}).join(',\n' + repeat.call('\t', nest + 1)) + '\n' +
 			repeat.call('\t', nest) + '}';
