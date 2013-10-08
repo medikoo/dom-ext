@@ -3,7 +3,7 @@
 
 'use strict';
 
-var CustomError   = require('es5-ext/error/custom')
+var customError   = require('es5-ext/error/custom')
   , element       = require('../valid-html-element')
   , getDimensions = require('./get-dimensions')
   , getPosition   = require('./get-position')
@@ -16,7 +16,7 @@ module.exports = function (/* options */) {
 
 	if (element(this).onmousewheel === undefined) {
 		if (this.onwheel === undefined) {
-			throw new CustomError('Wheel event not supported',
+			throw customError('Wheel event not supported',
 				'WHEEL_EVENT_NOT_SUPPORTED');
 		}
 		wheelEventName = 'wheel';
@@ -33,12 +33,12 @@ module.exports = function (/* options */) {
 		};
 
 		if (!imageDim.width || !imageDim.height) {
-			throw new CustomError("No image dimensions detected", 'NO_DIMENSIONS');
+			throw customError("No image dimensions detected", 'NO_DIMENSIONS');
 		}
 
 		wrapDim = getDimensions.call(this);
 		if (!wrapDim.width || !wrapDim.height) {
-			throw new CustomError("No wrap dimensions detected", 'NO_DIMENSIONS');
+			throw customError("No wrap dimensions detected", 'NO_DIMENSIONS');
 		}
 
 		this.style.overflow = 'hidden';
