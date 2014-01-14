@@ -4,7 +4,10 @@ var dispatch = require('../../../html-element/#/dispatch-event-2');
 
 module.exports = function (t, a, d) {
 	var form, e;
-	if (typeof document === 'undefined') return;
+	if (typeof document === 'undefined') {
+		d();
+		return;
+	}
 
 	form = document.createElement('form');
 	t.call(form);
