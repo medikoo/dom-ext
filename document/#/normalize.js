@@ -4,6 +4,8 @@ var toArray    = require('es5-ext/array/to-array')
   , isCallable = require('es5-ext/object/is-callable')
   , isList     = require('es5-ext/object/is-list')
   , isObject   = require('es5-ext/object/is-object')
+  , isIterable = require('es6-iterator/is-iterable')
+  , forOf      = require('es6-iterator/for-of')
   , isAttr     = require('../../attr/is-attr')
   , isNode     = require('../../node/is-node')
   , document    = require('../valid-document')
@@ -29,6 +31,14 @@ normalize = function (child, df, document) {
 			toArray(child).forEach(function (item) {
 				normalize(item, df, document);
 			});
+			return;
+		}
+		if (isIterable(child)) {
+			if (child.forEach) {
+				child.forEach(function (item) { normalize(item, df, document); });
+				return;
+			}
+			forOf(child, function (item) { normalize(item, df, document); });
 			return;
 		}
 	}
