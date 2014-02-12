@@ -1,13 +1,13 @@
 'use strict';
 
-var toArray    = require('es5-ext/array/to-array')
-  , isCallable = require('es5-ext/object/is-callable')
-  , isList     = require('es5-ext/object/is-list')
-  , isObject   = require('es5-ext/object/is-object')
-  , isIterable = require('es6-iterator/is-iterable')
-  , forOf      = require('es6-iterator/for-of')
-  , isAttr     = require('../../attr/is-attr')
-  , isNode     = require('../../node/is-node')
+var toArray     = require('es5-ext/array/to-array')
+  , isCallable  = require('es5-ext/object/is-callable')
+  , isArrayLike = require('es5-ext/object/is-array-like')
+  , isObject    = require('es5-ext/object/is-object')
+  , isIterable  = require('es6-iterator/is-iterable')
+  , forOf       = require('es6-iterator/for-of')
+  , isAttr      = require('../../attr/is-attr')
+  , isNode      = require('../../node/is-node')
   , document    = require('../valid-document')
 
   , forEach = Array.prototype.forEach
@@ -27,7 +27,7 @@ normalize = function (child, df, document) {
 			df.appendChild(child.toDOM(document));
 			return;
 		}
-		if (isList(child)) {
+		if (isArrayLike(child)) {
 			toArray(child).forEach(function (item) {
 				normalize(item, df, document);
 			});
