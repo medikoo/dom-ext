@@ -39,7 +39,8 @@ setNest = function (str, nest, tabWidth) {
 
 convertValue = function (value, nest) {
 	var type = typeof value, data;
-	if ((type === 'boolean') || (type === 'number') || isRegExp(value)) {
+	if ((value == null) || (type === 'boolean') || (type === 'number') ||
+			isRegExp(value)) {
 		return String(value);
 	}
 	if (type === 'function') {
