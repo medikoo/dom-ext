@@ -109,7 +109,7 @@ module.exports = function (/* options */) {
 		else setTimeout(checkAndInit, 200);
 	}.bind(this);
 
-	if (isImage(image)) imgPromise.call(image).end(checkAndInit);
+	if (isImage(image)) imgPromise.call(image).done(checkAndInit);
 	else checkAndInit();
 
 	return this;
