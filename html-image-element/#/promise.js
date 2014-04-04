@@ -1,7 +1,7 @@
 'use strict';
 
 var customError = require('es5-ext/error/custom')
-  , deferred    = require('deferred/lib/deferred')
+  , deferred    = require('deferred/deferred')
   , image       = require('../valid-html-image-element');
 
 module.exports = function (/* options */) {

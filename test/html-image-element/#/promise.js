@@ -1,6 +1,6 @@
 'use strict';
 
-var isPromise = require('deferred/lib/is-promise');
+var isPromise = require('deferred/is-promise');
 
 module.exports = function (t, a) {
 	var img;
