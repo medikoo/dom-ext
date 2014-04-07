@@ -7,8 +7,8 @@ var isCallable = require('es5-ext/object/is-callable')
 module.exports = function (name, value) {
 	element(this);
 	if (value == null) {
-		this.removeAttribute(name);
 		this[name] = null;
+		this.removeAttribute(name);
 	} else if (typeof value === 'string') {
 		this.setAttribute(name, value);
 	} else if (isCallable(value)) {
@@ -19,8 +19,8 @@ module.exports = function (name, value) {
 			this.setAttribute(name, name);
 			this[name] = true;
 		} else {
-			this.removeAttribute(name);
 			this[name] = false;
+			this.removeAttribute(name);
 		}
 	} else if (isCallable(value.toDOMAttr)) {
 		value.toDOMAttr(this, name);
