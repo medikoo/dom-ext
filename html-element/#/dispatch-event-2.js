@@ -3,7 +3,7 @@
 
 'use strict';
 
-var assign  = require('es5-ext/object/assign-multiple')
+var assign  = require('es5-ext/object/assign')
   , forEach = require('es5-ext/object/for-each')
   , element = require('../valid-html-element')
 
