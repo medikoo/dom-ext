@@ -1,6 +1,6 @@
 'use strict';
 
-var memoize  = require('memoizee/lib/regular')
+var memoize  = require('memoizee/plain')
   , addStyle = require('./add-style')
   , document = require('../valid-html-document')
 
@@ -9,7 +9,7 @@ var memoize  = require('memoizee/lib/regular')
 setStyle = memoize(function (document) {
 	addStyle.call(document, 'body.' + className +
 		' { background-color: transparent; }');
-});
+}, { normalizer: require('memoizee/normalizers/get-1')() });
 
 module.exports = function () {
 	var body, cache;
