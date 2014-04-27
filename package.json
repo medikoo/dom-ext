@@ -19,16 +19,16 @@
     "jquery"
   ],
   "dependencies": {
-    "d": "git://github.com/medikoo/d.git",
-    "deferred": "~0.6.5",
-    "es5-ext": "git://github.com/medikoo/es5-ext.git",
+    "d": "~0.1.1",
+    "deferred": "0.7.x",
+    "es5-ext": "~0.10.2",
     "es6-iterator": "git://github.com/medikoo/es6-iterator.git",
-    "memoizee": "git://github.com/medikoo/memoize.git",
+    "memoizee": "~0.3.1",
     "time-uuid": "git://github.com/medikoo/time-uuid.git"
   },
   "devDependencies": {
     "jsdom": "~0.8.4",
-    "tad": "~0.1.16"
+    "tad": "0.2.x"
   },
   "author": "Mariusz Nowak <medikoo+dom-ext@medikoo.com>",
   "license": "MIT"
