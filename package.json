@@ -1,35 +1,31 @@
 {
   "name": "dom-ext",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "DOM extensions",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "test": "node node_modules/tad/bin/tad"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/medikoo/dom-ext.git"
-  },
+  "author": "Mariusz Nowak <medyk@medikoo.com>",
   "keywords": [
     "dom",
     "browser",
     "jquery"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/medikoo/dom-ext.git"
+  },
   "dependencies": {
     "d": "~0.1.1",
-    "deferred": "0.7.x",
-    "es5-ext": "~0.10.2",
-    "es6-iterator": "git://github.com/medikoo/es6-iterator.git",
-    "memoizee": "~0.3.1",
-    "time-uuid": "git://github.com/medikoo/time-uuid.git"
+    "deferred": "~0.7.1",
+    "es5-ext": "~0.10.4",
+    "es6-iterator": "~0.1.1",
+    "memoizee": "~0.3.2",
+    "time-uuid": "0.2.x"
   },
   "devDependencies": {
-    "jsdom": "~0.8.4",
+    "jsdom": "~0.10.5",
     "tad": "0.2.x"
   },
-  "author": "Mariusz Nowak <medikoo+dom-ext@medikoo.com>",
+  "scripts": {
+    "test": "node node_modules/tad/bin/tad"
+  },
   "license": "MIT"
 }
