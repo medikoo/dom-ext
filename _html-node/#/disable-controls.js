@@ -8,7 +8,7 @@ module.exports = function (controlsFilter) {
 	return filter.call(this.querySelectorAll('input, textarea, select, button'),
 		function (control) {
 			if (controlsFilter && !controlsFilter(control)) return false;
-			if (control.getAttribute('disabled')) return false;
+			if (control.disabled) return false;
 			control.setAttribute('disabled', 'disabled');
 			control.disabled = true;
 			return true;
