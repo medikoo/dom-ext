@@ -1,25 +1,26 @@
 'use strict';
 
 var normalize = require('../../document/#/normalize')
-  , isDF      = require('../../document-fragment/is-document-fragment');
+
+  , isArray = Array.isArray;
 
 module.exports = function (child/*, …child*/) {
-	var oldNodes = this.childNodes, dom, nu, i = 0, old;
-	dom = normalize.apply(this.ownerDocument, arguments);
+	var oldNodes = this.childNodes, nuNodes, nu, i = 0, old;
+	nuNodes = normalize.apply(this.ownerDocument, arguments);
 
-	if (isDF(dom)) {
-		while ((nu = dom.firstChild)) {
+	if (isArray(nuNodes)) {
+		while ((nu = nuNodes.shift())) {
 			old = oldNodes[i++];
 			if (old !== nu) {
 				if (old) this.replaceChild(nu, old);
 				else this.appendChild(nu);
 			}
 		}
-	} else if (dom) {
+	} else if (nuNodes) {
 		old = oldNodes[i++];
-		if (old !== dom) {
-			if (old) this.replaceChild(dom, old);
-			else this.appendChild(dom);
+		if (old !== nuNodes) {
+			if (old) this.replaceChild(nuNodes, old);
+			else this.appendChild(nuNodes);
 		}
 	}
 	while (oldNodes.length > i) this.removeChild(oldNodes[i]);
