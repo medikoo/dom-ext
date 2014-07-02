@@ -19,18 +19,14 @@ normalize = function (child, df, document) {
 		df.appendChild(child);
 		return;
 	}
-	if (isAttr(child)) {
-		throw new TypeError("Free pass of attribute nodes is deprecated");
-	}
+	if (isAttr(child)) throw new TypeError("Free pass of attribute nodes is not supported");
 	if (isObject(child)) {
 		if (child.toDOM && isCallable(child.toDOM)) {
 			df.appendChild(child.toDOM(document));
 			return;
 		}
 		if (isArrayLike(child)) {
-			toArray(child).forEach(function (item) {
-				normalize(item, df, document);
-			});
+			toArray(child).forEach(function (item) { normalize(item, df, document); });
 			return;
 		}
 		if (isIterable(child)) {
@@ -47,8 +43,6 @@ normalize = function (child, df, document) {
 
 module.exports = function self(child/*, …childn*/) {
 	var df = document(this).createDocumentFragment();
-	forEach.call(arguments, function (child) {
-		normalize(child, df, this);
-	}, this);
+	forEach.call(arguments, function (child) { normalize(child, df, this); }, this);
 	return df.childNodes.length === 1 ? df.firstChild : df;
 };
