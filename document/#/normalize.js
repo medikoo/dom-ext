@@ -13,6 +13,7 @@ var isCallable  = require('es5-ext/object/is-callable')
   , forEach = Array.prototype.forEach, singular = null, multi = null, normalize;
 
 normalize = function (child) {
+	var index;
 	if (child == null) return;
 	if (!isNode(child)) {
 		if (isAttr(child)) throw new TypeError("Free pass of attribute nodes is not supported");
@@ -38,10 +39,13 @@ normalize = function (child) {
 		}
 	}
 	if (multi) {
+		index = multi.indexOf(child);
+		if (index !== -1) multi.splice(index, 1);
 		multi.push(child);
 		return;
 	}
 	if (singular) {
+		if (singular === child) return;
 		multi = [singular, child];
 		singular = null;
 		return;
