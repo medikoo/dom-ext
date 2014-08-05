@@ -10,55 +10,49 @@ var isCallable  = require('es5-ext/object/is-callable')
   , isNode      = require('../../node/is-node')
   , document    = require('../valid-document')
 
-  , isArray = Array.isArray, forEach = Array.prototype.forEach, singular = null, multi = null
-  , normalize, processItem;
+  , forEach = Array.prototype.forEach, singular = null, multi = null, normalize;
 
-processItem = function (item) {
-	var result = normalize(item, this);
-	if (!result) return;
-	if (isArray(result)) {
-		if (singular) {
-			result.unshift(singular);
-			singular = null;
+normalize = function (child) {
+	if (child == null) return;
+	if (!isNode(child)) {
+		if (isAttr(child)) throw new TypeError("Free pass of attribute nodes is not supported");
+		if (child.toDOM && isCallable(child.toDOM)) {
+			child = child.toDOM(this);
+		} else {
+			if (isObject(child)) {
+				if (isIterable(child)) {
+					if (child.forEach) {
+						child.forEach(normalize, this);
+						return;
+					}
+					if (!isString(child)) {
+						forOf(child, normalize, this);
+						return;
+					}
+				} else if (isArrayLike(child)) {
+					forEach.call(child, normalize, this);
+					return;
+				}
+			}
+			child = this.createTextNode(String(child));
 		}
-		multi = result;
-	} else if (isArray(multi)) {
-		multi.push(result);
-	} else if (singular) {
-		multi = [singular, result];
+	}
+	if (multi) {
+		multi.push(child);
+		return;
+	}
+	if (singular) {
+		multi = [singular, child];
 		singular = null;
-	} else {
-		singular = result;
+		return;
 	}
-};
-
-normalize = function (child, document) {
-	if (child == null) return null;
-	if (isNode(child)) return child;
-	if (isAttr(child)) throw new TypeError("Free pass of attribute nodes is not supported");
-	if (isObject(child)) {
-		if (child.toDOM && isCallable(child.toDOM)) return child.toDOM(document);
-		if (isIterable(child)) {
-			if (child.forEach) {
-				child.forEach(processItem, document);
-				return multi || singular || null;
-			}
-			if (!isString(child)) {
-				forOf(child, processItem);
-				return multi || singular || null;
-			}
-		} else if (isArrayLike(child)) {
-			forEach.call(child, processItem);
-			return multi || singular || null;
-		}
-	}
-	return document.createTextNode(String(child));
+	singular = child;
 };
 
 module.exports = function self(child/*, …childn*/) {
 	var result, cacheMulti = multi, cacheSingular = singular;
 	multi = singular = null;
-	forEach.call(arguments, processItem, document(this));
+	forEach.call(arguments, normalize, document(this));
 	result = multi || singular || null;
 	multi = cacheMulti;
 	singular = cacheSingular;

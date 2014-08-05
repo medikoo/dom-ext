@@ -23,4 +23,6 @@ module.exports = function (t, a) {
 
 	a.deep(t.call(document, el2, el3.childNodes), [el2, c1, c2],
 		"Child nodes");
+
+	a(t.call(document, [[el1]]), el1, "Nested list");
 };
