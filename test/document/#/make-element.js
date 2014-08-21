@@ -14,7 +14,7 @@ module.exports = function (t, a) {
 	a(el1.nodeType, 1, "NodeType");
 	a(el1.childNodes.length, 0, "Children");
 
-	el2 = t('div', { 'class': 'test', onclick: fn });
+	el2 = t('div', { class: 'test', onclick: fn });
 
 	a(el2.nodeName.toLowerCase(), 'div', "With attrs: NodeName");
 	a(el2.nodeType, 1, "With attrs: NodeType");
@@ -27,7 +27,7 @@ module.exports = function (t, a) {
 	a(el3.nodeType, 1, "With children: NodeType");
 	a.deep(aFrom(el3.childNodes), [el1, el2], "With children: Children");
 
-	el4 = t('section', { 'class': 'bar' }, el3, el2);
+	el4 = t('section', { class: 'bar' }, el3, el2);
 	a(el4.nodeName.toLowerCase(), 'section', "With attrs & children: NodeName");
 	a(el4.nodeType, 1, "With attrs & children: NodeType");
 	a(el4.getAttribute('class'), 'bar', "With attrs & children: Attribute");

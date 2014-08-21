@@ -9,7 +9,7 @@ module.exports = function (t, a) {
 
 	el1 = document.createElement('p');
 	el2 = document.createElement('div');
-	el2 = t.call(el2, { 'class': 'test', onclick: fn, foo: true, bar: false
+	el2 = t.call(el2, { class: 'test', onclick: fn, foo: true, bar: false
 		  , other: null, another: undefined });
 
 	a(el2.childNodes.length, 0, "With attrs: Children");
@@ -21,7 +21,7 @@ module.exports = function (t, a) {
 	a(el2.hasAttribute('another'), false,
 		"With attrs: Boolean (false) attribute");
 
-	t.call(el2, { 'class': false, onclick: null });
+	t.call(el2, { class: false, onclick: null });
 	a(el2.hasAttribute('class'), false, "Cancelled attribute (false)");
 	a(el2.hasAttribute('onclick'), false, "Cancelled attribute (null)");
 	a(el2.onclick, null, "Cancelled function property");
@@ -34,7 +34,7 @@ module.exports = function (t, a) {
 		"With children: Children");
 
 	el4 = document.createElement('section');
-	el4 = t.call(el4, { 'class': 'bar' }, el3, el2);
+	el4 = t.call(el4, { class: 'bar' }, el3, el2);
 	a(el4.nodeName.toLowerCase(), 'section', "With attrs & children: NodeName");
 	a(el4.nodeType, 1, "With attrs & children: NodeType");
 	a(el4.getAttribute('class'), 'bar', "With attrs & children: Attribute");
