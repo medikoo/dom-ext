@@ -1,6 +1,8 @@
 'use strict';
 
-var aFrom = require('es5-ext/array/from');
+var aFrom = require('es5-ext/array/from')
+
+  , exclude = require('../../../node/#/_exclude');
 
 module.exports = function (t, a) {
 	var el, el2, col1, col2, c1, c2;
@@ -21,8 +23,11 @@ module.exports = function (t, a) {
 	c1 = el2.appendChild(document.createElement('span'));
 	c2 = el2.appendChild(document.createElement('hr'));
 
-	a.deep(aFrom(t.call(el, el2.childNodes).childNodes), [c1, c2],
-		"Replace from childNodes");
+	a.deep(aFrom(t.call(el, el2.childNodes).childNodes), [c1, c2], "Replace from childNodes");
+
+	exclude.call(c2);
+	a.deep(aFrom(t.call(el, c2, c1).childNodes), [c2, c2._domExtLocation, c1],
+		"Replace with marked");
 
 	a.deep(t.call(el).childNodes, [], "Empty");
 };
