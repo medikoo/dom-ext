@@ -10,7 +10,7 @@ ass
 nomen
 plusplus
 
-predef+ document, setTimeout, clearTimeout
+predef+ document, setInterval, clearInterval, setTimeout, clearTimeout, MutationObserver
 
 ./html-image-element/#/promise.js
 bitwise
