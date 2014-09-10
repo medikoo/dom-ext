@@ -36,6 +36,7 @@ module.exports = function (source, propertyName/*, isApplicable*/) {
 	interval = setInterval(update, 500);
 
 	return {
+		update: update,
 		disconnect: function () {
 			sourceWindow.removeEventListener('resize', update, false);
 			if (mutationObserver) mutationObserver.disconnect();
