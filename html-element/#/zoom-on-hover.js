@@ -45,6 +45,7 @@ module.exports = function (/* options */) {
 		this.style.cursor = 'crosshair';
 
 		this.addEventListener('mouseover', function () {
+			wrapDim = getDimensions.call(this);
 			image.style.position = 'absolute';
 			image.style.top = '0';
 			image.style.left = '0';
