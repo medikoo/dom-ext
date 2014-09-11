@@ -16,8 +16,7 @@ module.exports = function (/* options */) {
 
 	if (element(this).onmousewheel === undefined) {
 		if (this.onwheel === undefined) {
-			throw customError('Wheel event not supported',
-				'WHEEL_EVENT_NOT_SUPPORTED');
+			throw customError('Wheel event not supported', 'WHEEL_EVENT_NOT_SUPPORTED');
 		}
 		wheelEventName = 'wheel';
 	} else {
@@ -83,11 +82,8 @@ module.exports = function (/* options */) {
 
 			e.preventDefault();
 
-			if (e.deltaY) {
-				deltaY = e.deltaY;
-			} else if (e.wheelDelta) {
-				deltaY = -e.wheelDelta;
-			}
+			if (e.deltaY) deltaY = e.deltaY;
+			else if (e.wheelDelta) deltaY = -e.wheelDelta;
 
 			delta = deltaY / 1200;
 
