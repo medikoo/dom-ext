@@ -46,6 +46,7 @@ module.exports = function (/* options */) {
 
 		this.addEventListener('mouseover', function () {
 			wrapDim = getDimensions.call(this);
+			zoom = 1;
 			image.style.position = 'absolute';
 			image.style.top = '0';
 			image.style.left = '0';
