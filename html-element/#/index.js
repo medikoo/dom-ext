@@ -7,5 +7,6 @@ module.exports = {
 	getId:           require('./get-id'),
 	getPosition:     require('./get-position'),
 	mergeClass:      require('./merge-class'),
+	syncStyle:       require('./sync-style'),
 	zoomOnHover:     require('./zoom-on-hover')
 };
