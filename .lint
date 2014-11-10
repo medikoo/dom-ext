@@ -9,6 +9,7 @@ tabs
 ass
 nomen
 plusplus
+vars
 
 predef+ document, setInterval, clearInterval, setTimeout, clearTimeout, MutationObserver
 
