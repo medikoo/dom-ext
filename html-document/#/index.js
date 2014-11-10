@@ -7,6 +7,7 @@ module.exports = {
 	getCookie:            require('./get-cookie'),
 	getCookies:           require('./get-cookies'),
 	generateInlineScript: require('./generate-inline-script'),
+	htmlToDom:            require('./html-to-dom'),
 	reflow:               require('./reflow'),
 	setCookie:            require('./set-cookie')
 };
