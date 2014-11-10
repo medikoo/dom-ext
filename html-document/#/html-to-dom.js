@@ -5,7 +5,7 @@ var value    = require('es5-ext/object/valid-value')
   , document = require('../valid-html-document');
 
 var getHtmlToDom = memoize(function (document) {
-	var el = document.createElement('p'), df;
+	var el = document.createElement('div'), df;
 	return function (html) {
 		el.innerHTML = html;
 		switch (el.childNodes.length) {
