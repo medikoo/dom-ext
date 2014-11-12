@@ -1,9 +1,12 @@
 'use strict';
 
-var element    = require('../valid-html-element')
-  , randomUniq = require('time-uuid');
+var generateId = require('../../html-document/generate-id')
+  , element    = require('../valid-html-element');
 
-module.exports = function () {
+module.exports = function (name) {
+	var id;
 	if (element(this).id) return this.id;
-	return (this.id = this.nodeName.toLowerCase() + '-' + randomUniq());
+	if (name != null) id = generateId(name);
+	else id = this.nodeName.toLowerCase() + '-' + generateId();
+	return (this.id = id);
 };
