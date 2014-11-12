@@ -11,10 +11,26 @@ var isCallable         = require('es5-ext/object/is-callable')
   , isNode             = require('../../node/is-node')
   , document           = require('../valid-document')
 
-  , forEach = Array.prototype.forEach, singular = null, multi = null, normalize;
+  , forEach = Array.prototype.forEach, singular = null, multi = null;
 
-normalize = function (child) {
+var normalizeNode = function (node) {
 	var index;
+	if (multi) {
+		index = multi.indexOf(node);
+		if (index !== -1) multi.splice(index, 1);
+		multi.push(node);
+		return;
+	}
+	if (singular) {
+		if (singular === node) return;
+		multi = [singular, node];
+		singular = null;
+		return;
+	}
+	singular = node;
+};
+
+var normalize = function (child) {
 	if (child == null) return;
 	if (!isNode(child)) {
 		if (isAttr(child)) throw new TypeError("Free pass of attribute nodes is not supported");
@@ -39,22 +55,10 @@ normalize = function (child) {
 		}
 		child = this.createTextNode(String(child));
 	} else if (isDocumentFragment(child)) {
-		forEach.call(child.childNodes, normalize, this);
+		forEach.call(child.childNodes, normalizeNode);
 		return;
 	}
-	if (multi) {
-		index = multi.indexOf(child);
-		if (index !== -1) multi.splice(index, 1);
-		multi.push(child);
-		return;
-	}
-	if (singular) {
-		if (singular === child) return;
-		multi = [singular, child];
-		singular = null;
-		return;
-	}
-	singular = child;
+	normalizeNode(child);
 };
 
 module.exports = function self(child/*, …childn*/) {
