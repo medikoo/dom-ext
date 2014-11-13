@@ -1,7 +1,6 @@
 'use strict';
 
-var isCallable         = require('es5-ext/object/is-callable')
-  , isArrayLike        = require('es5-ext/object/is-array-like')
+var isArrayLike        = require('es5-ext/object/is-array-like')
   , isObject           = require('es5-ext/object/is-object')
   , isString           = require('es5-ext/string/is-string')
   , isIterable         = require('es6-iterator/is-iterable')
@@ -34,7 +33,7 @@ var normalize = function (child) {
 	if (child == null) return;
 	if (!isNode(child)) {
 		if (isAttr(child)) throw new TypeError("Free pass of attribute nodes is not supported");
-		if (child.toDOM && isCallable(child.toDOM)) {
+		if (typeof child.toDOM === 'function') {
 			normalize(child.toDOM(this));
 			return;
 		}
