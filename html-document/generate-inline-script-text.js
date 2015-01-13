@@ -1,7 +1,7 @@
 'use strict';
 
 var isDate        = require('es5-ext/date/is-date')
-  , validFunction = require('es5-ext/function/valid-function')
+  , toTokens      = require('es5-ext/function/#/to-string-tokens')
   , isPlainObject = require('es5-ext/object/is-plain-object')
   , toArray       = require('es5-ext/object/to-array')
   , isRegExp      = require('es5-ext/reg-exp/is-reg-exp')
@@ -66,13 +66,10 @@ convertValue = function (value, nest) {
 };
 
 module.exports = function (fn/*, …localVars*/) {
-	var data, localVars;
-	validFunction(fn);
-	localVars = slice.call(arguments, 1);
+	var data = toTokens.call(fn), localVars = slice.call(arguments, 1);
 
-	data = String(fn).match(functionRe);
-	return '(function (' + data[1] + ') { \'use strict\';' +
-		setNest(data[2], 0) + '}(' + map.call(localVars, function (value) {
+	return '(function (' + data.args + ') { \'use strict\';' +
+		setNest(data.body, 0) + '}(' + map.call(localVars, function (value) {
 			return convertValue(value, 1);
 		}).join(',') +  '));';
 };
