@@ -68,8 +68,8 @@ convertValue = function (value, nest) {
 module.exports = function (fn/*, …localVars*/) {
 	var data = toTokens.call(fn), localVars = slice.call(arguments, 1);
 
-	return '(function (' + data.args + ') { \'use strict\';' +
-		setNest(data.body, 0) + '}(' + map.call(localVars, function (value) {
+	return '(function (' + data.args + ') { \'use strict\';' + data.body + '}(' +
+		map.call(localVars, function (value) {
 			return convertValue(value, 1);
 		}).join(',') +  '));';
 };
