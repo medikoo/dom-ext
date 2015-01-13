@@ -38,22 +38,19 @@ setNest = function (str, nest, tabWidth) {
 
 convertValue = function (value, nest) {
 	var type = typeof value, data;
-	if ((value == null) || (type === 'boolean') || (type === 'number') ||
-			isRegExp(value)) {
+	if ((value == null) || (type === 'boolean') || (type === 'number') || isRegExp(value)) {
 		return String(value);
 	}
 	if (type === 'function') {
 		data = match.call(value, functionRe);
-		return 'function (' + data[1] + ') {' + setNest(data[2], nest) +
-			repeat.call('\t', nest) + '}';
+		return 'function (' + data[1] + ') {' + setNest(data[2], nest) + repeat.call('\t', nest) + '}';
 	}
 	if (isDate(value)) return 'new Date(' + value.getTime() + ')';
 	if (isPlainObject(value)) {
 		data = '{\n' + repeat.call('\t', nest + 1);
 		data += toArray(value, function (value, name) {
 			return stringify(name) + ': ' + convertValue(value, nest + 1);
-		}).join(',\n' + repeat.call('\t', nest + 1)) + '\n' +
-			repeat.call('\t', nest) + '}';
+		}).join(',\n' + repeat.call('\t', nest + 1)) + '\n' + repeat.call('\t', nest) + '}';
 		return data;
 	}
 	if (isArray(value)) {
