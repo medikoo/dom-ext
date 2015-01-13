@@ -1,69 +1,46 @@
 'use strict';
 
-var isDate        = require('es5-ext/date/is-date')
+var aFrom         = require('es5-ext/array/from')
+  , contains      = require('es5-ext/array/#/contains')
+  , isDate        = require('es5-ext/date/is-date')
+  , customError   = require('es5-ext/error/custom')
+  , isFunction    = require('es5-ext/function/is-function')
   , toTokens      = require('es5-ext/function/#/to-string-tokens')
+  , isObject      = require('es5-ext/object/is-object')
   , isPlainObject = require('es5-ext/object/is-plain-object')
   , toArray       = require('es5-ext/object/to-array')
   , isRegExp      = require('es5-ext/reg-exp/is-reg-exp')
-  , repeat        = require('es5-ext/string/#/repeat')
+  , serialize     = require('es5-ext/object/stringify')
 
-  , isArray = Array.isArray, slice = Array.prototype.slice, min = Math.min
-  , match = String.prototype.match, stringify = JSON.stringify
-  , functionRe = new RegExp('^\\s*function[\\0-\'\\)-\\uffff]*' +
-		'\\(([\\0-\\(\\*-\\uffff]*)\\)\\s*\\{([\\0-\\uffff]*)\\}\\s*$')
-  , setNest, convertValue;
+  , isArray = Array.isArray, slice = Array.prototype.slice, stringify = JSON.stringify
+  , convertValue;
 
-setNest = function (str, nest, tabWidth) {
-	var data, current, tabs = true, add, remove;
-	data = str.split('\n');
-	current = min.apply(null, data.map(function (str) {
-		if (!str) return Infinity;
-		return str.match(/^(\t*)/)[1].length;
-	}));
-	if (current === Infinity) current = 0;
-
-	if (nest > current) {
-		if (tabs) add = repeat.call('\t', nest - current);
-		else add = repeat.call(' ', (nest - current) * tabWidth);
-	} else {
-		remove = current - nest;
-		if (!tabs) remove *= tabWidth;
-	}
-	return data.map(function (str) {
-		if (!str) return str;
-		if (add) return add + str;
-		return str.slice(remove);
-	}).join('\n');
+var keyValueToString = function (value, key) {
+	return stringify(key) + ':' + convertValue(value, this);
 };
 
-convertValue = function (value, nest) {
-	var type = typeof value, data;
-	if ((value == null) || (type === 'boolean') || (type === 'number') || isRegExp(value)) {
-		return String(value);
+convertValue = function (value, ancestors) {
+	if (!isObject(value)) return serialize(value);
+	if (isDate(value)) return serialize(value);
+	if (isRegExp(value)) return serialize(value);
+	if (isFunction(value)) return serialize(value);
+	if (contains.call(ancestors, value)) {
+		throw customError('Cannot handle recursive structure', 'RECURSIVE_STRUCTURE');
 	}
-	if (type === 'function') {
-		data = match.call(value, functionRe);
-		return 'function (' + data[1] + ') {' + setNest(data[2], nest) + repeat.call('\t', nest) + '}';
-	}
-	if (isDate(value)) return 'new Date(' + value.getTime() + ')';
-	if (isPlainObject(value)) {
-		data = '{\n' + repeat.call('\t', nest + 1);
-		data += toArray(value, function (value, name) {
-			return stringify(name) + ': ' + convertValue(value, nest + 1);
-		}).join(',\n' + repeat.call('\t', nest + 1)) + '\n' + repeat.call('\t', nest) + '}';
-		return data;
-	}
+	ancestors = aFrom(ancestors);
+	ancestors.push(value);
 	if (isArray(value)) {
-		return '[' + value.map(function (value) {
-			return convertValue(value, nest + 1);
-		}).join(', ') + ']';
+		return '[' + value.map(function (value) { convertValue(value, ancestors); }) + ']';
 	}
-	return stringify(String(value));
+	if (!isPlainObject(value)) {
+		throw customError(value + ' cannot be serialized', 'UNSERIALIZABLE_VALUE');
+	}
+	return '{' + toArray(value, keyValueToString, ancestors) + '}';
 };
 
 module.exports = function (fn/*, …localVars*/) {
 	var data = toTokens.call(fn), localVars = slice.call(arguments, 1);
 
 	return '(function (' + data.args + ') { \'use strict\';' + data.body + '}(' +
-		localVars.map(function (value) { return convertValue(value, 1); }).join(',') +  '));';
+		localVars.map(function (value) { return convertValue(value, []); }).join(',') +  '));';
 };
