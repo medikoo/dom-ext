@@ -68,7 +68,5 @@ module.exports = function (fn/*, …localVars*/) {
 	var data = toTokens.call(fn), localVars = slice.call(arguments, 1);
 
 	return '(function (' + data.args + ') { \'use strict\';' + data.body + '}(' +
-		localVars.map(function (value) {
-			return convertValue(value, 1);
-		}).join(',') +  '));';
+		localVars.map(function (value) { return convertValue(value, 1); }).join(',') +  '));';
 };
