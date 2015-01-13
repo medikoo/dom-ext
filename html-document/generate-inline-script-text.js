@@ -7,8 +7,7 @@ var isDate        = require('es5-ext/date/is-date')
   , isRegExp      = require('es5-ext/reg-exp/is-reg-exp')
   , repeat        = require('es5-ext/string/#/repeat')
 
-  , isArray = Array.isArray, map = Array.prototype.map
-  , slice = Array.prototype.slice, min = Math.min
+  , isArray = Array.isArray, slice = Array.prototype.slice, min = Math.min
   , match = String.prototype.match, stringify = JSON.stringify
   , functionRe = new RegExp('^\\s*function[\\0-\'\\)-\\uffff]*' +
 		'\\(([\\0-\\(\\*-\\uffff]*)\\)\\s*\\{([\\0-\\uffff]*)\\}\\s*$')
@@ -69,7 +68,7 @@ module.exports = function (fn/*, …localVars*/) {
 	var data = toTokens.call(fn), localVars = slice.call(arguments, 1);
 
 	return '(function (' + data.args + ') { \'use strict\';' + data.body + '}(' +
-		map.call(localVars, function (value) {
+		localVars.map(function (value) {
 			return convertValue(value, 1);
 		}).join(',') +  '));';
 };
