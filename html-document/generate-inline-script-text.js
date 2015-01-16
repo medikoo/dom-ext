@@ -30,7 +30,7 @@ convertValue = function (value, ancestors) {
 	ancestors = aFrom(ancestors);
 	ancestors.push(value);
 	if (isArray(value)) {
-		return '[' + value.map(function (value) { convertValue(value, ancestors); }) + ']';
+		return '[' + value.map(function (value) { return convertValue(value, ancestors); }) + ']';
 	}
 	if (!isPlainObject(value)) {
 		throw customError(value + ' cannot be serialized', 'UNSERIALIZABLE_VALUE');
