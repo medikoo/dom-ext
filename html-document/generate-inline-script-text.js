@@ -10,7 +10,7 @@ var aFrom         = require('es5-ext/array/from')
   , isPlainObject = require('es5-ext/object/is-plain-object')
   , toArray       = require('es5-ext/object/to-array')
   , isRegExp      = require('es5-ext/reg-exp/is-reg-exp')
-  , serialize     = require('es5-ext/object/stringify')
+  , serialize     = require('es5-ext/object/serialize')
 
   , isArray = Array.isArray, slice = Array.prototype.slice, stringify = JSON.stringify
   , convertValue;
