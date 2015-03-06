@@ -1,5 +1,7 @@
 'use strict';
 
+var ObservableValue = require('observable-value');
+
 module.exports = function (t, a) {
 	var el, fn = function () {}, attr;
 
@@ -35,4 +37,16 @@ module.exports = function (t, a) {
 	a(el.hasAttribute('lorem'), false, "Cancelled attribute (false)");
 	a(el.hasAttribute('onclick'), false, "Cancelled attribute (null)");
 	a(el.onclick, null, "Cancelled function property");
+
+	var x = ['foo', 'bar'];
+	t.call(el, 'miszka', x);
+	a(el.getAttribute('miszka'), 'foo bar');
+	var y = new ObservableValue();
+	x = ['foo', y, 'bar'];
+	t.call(el, 'miszka2', x);
+	a(el.getAttribute('miszka2'), 'foo bar');
+	y.value = 'elo';
+	a(el.getAttribute('miszka2'), 'foo elo bar');
+	y.value = null;
+	a(el.getAttribute('miszka2'), 'foo bar');
 };
