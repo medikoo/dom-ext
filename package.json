@@ -22,7 +22,7 @@
     "time-uuid": "0.2.x"
   },
   "devDependencies": {
-    "jsdom": "~0.10.5",
+    "jsdom": "3",
     "tad": "0.2.x",
     "xlint": "~0.2.1",
     "xlint-jslint-medikoo": "0.1.x"
