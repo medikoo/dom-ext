@@ -25,6 +25,5 @@ var generateFromName = (function () {
 }());
 
 module.exports = function (name) {
-	if (name != null) return generateFromName(name);
-	return 'i' + randomUniq();
+	return generateFromName(name || ('i' + randomUniq()));
 };
