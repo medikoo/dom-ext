@@ -8,8 +8,8 @@ module.exports = function (t, a) {
 
 	el = document.createElement('p');
 	child1 = document.createElement('span');
-	child2 = document.createElement('span');
-	child3 = document.createElement('span');
+	child2 = document.createElement('b');
+	child3 = document.createElement('a');
 
 	list = [child1, child3, child2];
 	t.call(el, list);
