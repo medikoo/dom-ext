@@ -10,4 +10,5 @@ module.exports = function (name) {
 	if (startsWith.call(name, '-')) name = name.slice(1);
 	if (endsWith.call(name, '-')) name = name.slice(0, -1);
 	if (!name) name = 'x';
+	return name;
 };
