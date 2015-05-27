@@ -1,4 +1,4 @@
-// Ensure provided string is valid id and return it
+// Ensure provided string is a valid id and return it
 
 'use strict';
 
