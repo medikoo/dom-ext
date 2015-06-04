@@ -1,3 +1,5 @@
+// Whether provide node can have child nodes
+
 'use strict';
 
 var isNode = require('../node/is-node')

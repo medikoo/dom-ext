@@ -1,3 +1,5 @@
+// Validate provided node, so it's a node that may contain child nodes
+
 'use strict';
 
 var is = require('./is');
