@@ -15,5 +15,6 @@ module.exports = {
 	htmlOptionElement:   require('./html-option-element'),
 	htmlTableRowElement: require('./html-table-row-element'),
 	node:                require('./node'),
+	parentNode:          require('./parent-node'),
 	text:                require('./text')
 };
