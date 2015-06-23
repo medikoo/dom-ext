@@ -1,5 +1,31 @@
+v0.0.2  --  2015.06.23
+* Add:
+  * element.isIdent
+  * element.assureIdent
+  * document.htmlToDom
+  * document.normalizeRaw
+  * parentNode.is
+  * parentNode.ensure
+  * htmlElement.syncStyle
+  * htmlElement.isBlockElement
+  * htmlElement.isInlineElement
+  * htmlDocument.generateId
+  * htmlDocument.toIdString
+* In getId, rely on random generator, not time-uuid (as it requires compiled dependencies)
+* Support 'name' in getId generator
+* Improve dimensions and zoom handling in zoomOnHover
+* document.normalize now returns arrays instead of DocumentFragments
+  (as it should not bring changes to DOM trees). Additionally internal algorithm got improved
+* Support array of values in element.castAttribute
+* Improve disabled detenction in disabledControls
+* Update up to changes in dependencies
+* Improve algorithm of htmlDocument.generateInlineScriptText
+* Fix spelling of LICENSE
+* Remove Makefile
+* Configure lint scripts
+
 v0.0.1  --  2014.05.08
-* Chage filename conventions
+* Change filename conventions
 * Update to use latest versions of dependencies
 * Use strictly npm hosted dependencies
 * Support iterators in various methods
