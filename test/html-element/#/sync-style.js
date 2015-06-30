@@ -14,7 +14,7 @@ module.exports = function (t, a, d) {
 		a(target.style.height, '100px');
 		source.style.height = '200px';
 		setTimeout(function () {
-			a(target.style.height, '220px');
+			a(target.style.height, '200px');
 			observer.disconnect();
 			d();
 		}, 1000);
