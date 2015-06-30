@@ -1,9 +1,10 @@
 'use strict';
 
-var ensureElement = require('../valid-element');
+var forEachRight  = require('es5-ext/array/#/for-each-right')
+  , ensureElement = require('../valid-element');
 
 module.exports = function () {
 	ensureElement(this);
-	while (this.attributes[0]) this.removeAttribute(this.attributes[0].name);
+	forEachRight.call(this.attributes, function (attr) { this.removeAttribute(attr.name); }, this);
 	return this;
 };
