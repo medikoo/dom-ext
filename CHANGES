@@ -1,3 +1,13 @@
+v0.0.3  --  2015.07.01
+* Add Element#clearAttributes
+* Update Element#extend:
+  * If it's called with one argument and it's arguments, then treat it as if that
+    object is and arguments for the method. This allows passthru arguments to extends as:
+    el.extends(arguments);
+  * If there's a class in attributes object, treat it as extension, so it doesn't overwrite already
+    exiting classes on element
+* Fix tests for cookies related document methods
+
 v0.0.2  --  2015.06.23
 * Add:
   * element.isIdent
