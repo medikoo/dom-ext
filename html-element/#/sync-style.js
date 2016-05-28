@@ -9,7 +9,7 @@ var callable = require('es5-ext/object/valid-callable')
 
 module.exports = function (source, propertyName/*, isApplicable*/) {
 	var update, computedStyle, sourceWindow, target, mutationObserver, interval
-	  , initial, isApplicable = arguments[2];
+	  , isApplicable = arguments[2];
 
 	target = element(this);
 	element(source);
@@ -17,10 +17,9 @@ module.exports = function (source, propertyName/*, isApplicable*/) {
 	if (isApplicable !== undefined) callable(isApplicable);
 	sourceWindow = source.ownerDocument.defaultView;
 	computedStyle = sourceWindow.getComputedStyle(source);
-	initial = target.style[propertyName];
 	update = once(function () {
-		target.style[propertyName] = (isApplicable && !isApplicable())
-			? initial : computedStyle[propertyName];
+		if (isApplicable && !isApplicable()) return;
+		target.style[propertyName] = computedStyle[propertyName];
 	});
 
 	// on resize
