@@ -6,4 +6,4 @@ try {
 	document = require('jsdom').jsdom();
 } catch (ignore) {}
 
-exports.context = document ? { document: document } : {};
+exports.context = document ? { document: document, setTimeout: setTimeout } : {};
