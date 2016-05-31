@@ -9,8 +9,8 @@ module.exports = function (controlsFilter) {
 		function (control) {
 			if (controlsFilter && !controlsFilter(control)) return false;
 			if (control.disabled) return false;
-			control.setAttribute('disabled', 'disabled');
 			control.disabled = true;
+			control.setAttribute('disabled', 'disabled');
 			return true;
 		});
 };
