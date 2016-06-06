@@ -14,7 +14,7 @@ var resolveArray = function (element, name, arr) {
 	var onUpdate;
 	arr = compact.call(arr);
 	if (!arr.some(function (el) { return isObservable(el); })) {
-		element.setAttribute(name, compact.call(arr).map(String).join(" "));
+		element.setAttribute(name, compact.call(flatten.call(arr)).map(String).join(" "));
 		return;
 	}
 	onUpdate = function () {
