@@ -1,6 +1,7 @@
 'use strict';
 
 var compact      = require('es5-ext/array/#/compact')
+  , flatten      = require('es5-ext/array/#/flatten')
   , isCallable   = require('es5-ext/object/is-callable')
   , isObservable = require('observable-value/is-observable-value')
   , isAttr       = require('../../attr/is-attr')
@@ -18,7 +19,7 @@ var resolveArray = function (element, name, arr) {
 	}
 	onUpdate = function () {
 		element.setAttribute(name,
-			compact.call(map.call(arr, resolveObservable)).map(String).join(" "));
+			compact.call(flatten.call(map.call(arr, resolveObservable))).map(String).join(" "));
 	};
 	arr.forEach(function (value) {
 		if (isObservable(value)) value.on('change', onUpdate);
