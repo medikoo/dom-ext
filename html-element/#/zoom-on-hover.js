@@ -41,7 +41,7 @@ module.exports = function (/* options */) {
 		}
 
 		// We want to avoid interface glitches for too large images
-		if(Math.max(imageDim.width, imageDim.height) > 3000) {
+		if (Math.max(imageDim.width, imageDim.height) > 3000) {
 			return;
 		}
 		this.style.overflow = 'hidden';
