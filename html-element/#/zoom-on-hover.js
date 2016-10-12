@@ -40,6 +40,10 @@ module.exports = function (/* options */) {
 			throw customError("No wrap dimensions detected", 'NO_DIMENSIONS');
 		}
 
+		// We want to avoid interface glitches for too large images
+		if (Math.max(imageDim.width, imageDim.height) > 3000) {
+			return;
+		}
 		this.style.overflow = 'hidden';
 		this.style.position = 'relative';
 		this.style.cursor = 'crosshair';
