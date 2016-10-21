@@ -107,7 +107,7 @@ module.exports = function (/* options */) {
 	}.bind(this);
 
 	checkAndInit = function () {
-		if (this.offsetWidth && this.offsetHeight) init();
+		if (this.offsetWidth && this.offsetHeight && (options.width || image.naturalWidth)) init();
 		else setTimeout(checkAndInit, 200);
 	}.bind(this);
 
