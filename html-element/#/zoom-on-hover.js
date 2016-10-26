@@ -115,7 +115,8 @@ module.exports = function (/* options */) {
 		imgPromise.call(image).done(checkAndInit, function (err) {
 			if (err.code === 'LOAD_ERROR') {
 				console.error(err.stack);
-				console.error("Cannot load image " + JSON.stringify(image.src) + " due to network issues");
+				console.error("Cannot load image " + JSON.stringify(image.src) +
+					" due to not reliable network connection");
 				return;
 			}
 			if (err.code === 'LOAD_ABORTED') {
