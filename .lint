@@ -12,7 +12,7 @@ nomen
 plusplus
 vars
 
-predef+ document, setInterval, clearInterval, setTimeout, clearTimeout, MutationObserver
+predef+ document, setInterval, clearInterval, setTimeout, clearTimeout, MutationObserver, console
 
 ./html-image-element/#/promise.js
 bitwise
