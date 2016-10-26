@@ -111,8 +111,23 @@ module.exports = function (/* options */) {
 		else setTimeout(checkAndInit, 200);
 	}.bind(this);
 
-	if (isImage(image)) imgPromise.call(image).done(checkAndInit);
-	else checkAndInit();
+	if (isImage(image)) {
+		imgPromise.call(image).done(checkAndInit, function (err) {
+			if (err.code === 'LOAD_ERROR') {
+				console.error(err.stack);
+				console.error("Cannot load image " + JSON.stringify(image.src) + " due to network issues");
+				return;
+			}
+			if (err.code === 'LOAD_ABORTED') {
+				console.error(err.stack);
+				console.error("Aborted load of image " + JSON.stringify(image.src));
+				return;
+			}
+			throw err;
+		});
+	} else {
+		checkAndInit();
+	}
 
 	return this;
 };
