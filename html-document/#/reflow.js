@@ -13,7 +13,8 @@ setStyle = memoize(function (document) {
 
 module.exports = function () {
 	var body, cache;
-	setStyle(document(this));
+	if (!document(this).body) return;
+	setStyle(this);
 	body = this.body;
 	cache = body.style.display;
 	body.style.display = 'none';
