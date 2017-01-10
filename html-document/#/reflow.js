@@ -13,7 +13,7 @@ setStyle = memoize(function (document) {
 
 module.exports = function () {
 	var body, cache;
-	if (!document(this).body) return;
+	if (!document(this).body) return; // No body, no reflow that can be done
 	setStyle(this);
 	body = this.body;
 	cache = body.style.display;
