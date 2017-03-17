@@ -10,5 +10,6 @@ module.exports = function (t, a) {
 	el = document.createElement('p');
 	el.appendChild(document.createElement('div'));
 
+	if ((el.onmousewheel === undefined) && (el.onwheel === undefined)) return;
 	a(t.call(el, { width: 1000, height: 1000 }), el);
 };
