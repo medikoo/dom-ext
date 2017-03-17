@@ -8,7 +8,7 @@ var callable = require('es5-ext/object/valid-callable')
   , observerConfig = { attributes: true, childList: true, subtree: true };
 
 module.exports = function (source, propertyName/*, isApplicable*/) {
-	var update, computedStyle, sourceWindow, target, mutationObserver, interval
+	var update, sourceWindow, target, mutationObserver, interval
 	  , isApplicable = arguments[2];
 
 	target = element(this);
@@ -16,10 +16,9 @@ module.exports = function (source, propertyName/*, isApplicable*/) {
 	propertyName = String(value(propertyName));
 	if (isApplicable !== undefined) callable(isApplicable);
 	sourceWindow = source.ownerDocument.defaultView;
-	computedStyle = sourceWindow.getComputedStyle(source);
 	update = once(function () {
 		if (isApplicable && !isApplicable()) return;
-		target.style[propertyName] = computedStyle[propertyName];
+		target.style[propertyName] = sourceWindow.getComputedStyle(source)[propertyName];
 	});
 
 	// on resize
