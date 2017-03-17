@@ -1,3 +1,13 @@
+v0.1.0  --  2017.03.17
+* Support nested arrays in element.castAttribute handling
+* Improve internals of htmlElement.zoomOnHover
+* Disable htmlElement.zoomOnHover for large images
+* Handle gracefully lack of document.body in htmlDocument.reflow
+* Introduce `isApplicable` option to htmlElement.syncStyle
+* Improve htmlNode.disableControls
+* Improve tests
+* Update dependencies
+
 v0.0.3  --  2015.07.01
 * Add Element#clearAttributes
 * Update Element#extend:

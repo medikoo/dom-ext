@@ -1,6 +1,6 @@
 {
   "name": "dom-ext",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "DOM extensions",
   "author": "Mariusz Nowak <medyk@medikoo.com>",
   "keywords": [
@@ -13,13 +13,13 @@
     "url": "git://github.com/medikoo/dom-ext.git"
   },
   "dependencies": {
-    "d": "^0.1.1",
-    "deferred": "^0.7.2",
-    "es5-ext": "^0.10.7",
-    "es6-iterator": "^0.1.3",
-    "memoizee": "^0.3.8",
-    "observable-value": "0.0.3",
-    "timers-ext": "0.1"
+    "d": "1",
+    "deferred": "^0.7.6",
+    "es5-ext": "^0.10.14",
+    "es6-iterator": "^2.0.1",
+    "memoizee": "^0.4.4",
+    "observable-value": "0.1",
+    "timers-ext": "^0.1.1"
   },
   "devDependencies": {
     "jsdom": "^9.2.1",
