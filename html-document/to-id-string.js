@@ -5,7 +5,7 @@ var startsWith = require('es5-ext/string/#/starts-with')
 
   , nonAsciiRe = /[\0-\/:-@\[-`{-\uffff]/g
   , dashRe = /-{2,}/g
-	, startsWithDigit = RegExp.prototype.test.bind(/^\d/);
+  , startsWithDigit = RegExp.prototype.test.bind(/^\d/);
 
 module.exports = function (name) {
 	name = String(name).toLowerCase().trim().replace(nonAsciiRe, '-').replace(dashRe, '-');
