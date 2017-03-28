@@ -1,3 +1,6 @@
+v0.1.2  --  2017.03.38
+* Add HTMLDocument.getToIdString (idToString generator which prevents duplicates)
+
 v0.1.1  --  2017.03.28
 * Fix HTMLDocument.toIdString, to not generate id's that start with 0
 
