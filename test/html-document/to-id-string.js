@@ -8,4 +8,5 @@ module.exports = function (t, a) {
 	a(t('-bar'), 'bar');
 	a(t('mąćłńora'), 'm-ora');
 	a(t('  Some    Text  '), 'some-text');
+	a(t('0moszka'), 'a0moszka');
 };
