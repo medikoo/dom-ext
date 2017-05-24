@@ -9,3 +9,7 @@ All notable changes to this project will be documented in this file. See [standa
 ### Features
 
 * Element.prototype.resolveTextChild method ([ffa40eb](https://github.com/medikoo/dom-ext/commit/ffa40eb))
+
+## Old Changelog
+
+See `CHANGES` file

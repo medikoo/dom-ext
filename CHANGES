@@ -1,3 +1,5 @@
+For new changes see CHANGELOG.md
+
 v0.1.2  --  2017.03.38
 * Add HTMLDocument.getToIdString (idToString generator which prevents duplicates)
 
