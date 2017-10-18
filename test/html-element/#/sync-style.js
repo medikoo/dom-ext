@@ -2,7 +2,10 @@
 
 module.exports = function (t, a, d) {
 	var source, target, observer;
-	if (typeof document === 'undefined') return;
+	if (typeof document === 'undefined') {
+		d();
+		return;
+	}
 
 	source = document.createElement('p');
 	target = document.createElement('p');
