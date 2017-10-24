@@ -6,4 +6,10 @@ try {
 	document = new (require('jsdom').JSDOM)().window.document;
 } catch (ignore) {}
 
-exports.context = document ? { document: document, setTimeout: setTimeout } : {};
+exports.context = document ? {
+	document: document,
+	setTimeout: setTimeout,
+	clearTimeout: clearTimeout,
+	setInterval: setInterval,
+	clearInterval: clearInterval
+} : {};
