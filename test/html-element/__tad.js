@@ -3,8 +3,10 @@
 var document;
 
 try {
-	document = require('jsdom').jsdom();
-} catch (ignore) {}
+	document = new (require('jsdom').JSDOM)().window.document;
+} catch (ignore) {
+	console.log(ignore);
+}
 
 exports.context = document ? {
 	document: document,
