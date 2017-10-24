@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
 module.exports = {
-	isText:    require('./is-text'),
-	'#':       require('./#'),
-	validText: require('./valid-text')
+	"isText": require("./is-text"),
+	"#": require("./#"),
+	"validText": require("./valid-text")
 };

@@ -1,6 +1,8 @@
-'use strict';
+"use strict";
 
-var exclude = require('../../node/#/_exclude')
-  , text    = require('../valid-text');
+var exclude = require("../../node/#/_exclude")
+  , text    = require("../valid-text");
 
-module.exports = function () { return exclude.call(text(this)); };
+module.exports = function () {
+ return exclude.call(text(this));
+};

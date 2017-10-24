@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-var document = require('../valid-html-document')
+var document = require("../valid-html-document")
 
   , now = Date.now;
 
@@ -13,27 +13,27 @@ module.exports = function (name, value/*, options*/) {
 	if (value === undefined) options.expires = -1;
 	else value = String(value);
 
-	if (!options.hasOwnProperty('path')) options.path = '/';
+	if (!options.hasOwnProperty("path")) options.path = "/";
 
 	age = options.expires;
-	age = (!isNaN(age) && age) ? new Date(now() + age * 1000) : null;
+	age = !isNaN(age) && age ? new Date(now() + age * 1000) : null;
 
-	str = encodeURIComponent(name) + '=';
+	str = encodeURIComponent(name) + "=";
 	if (value) {
 		str += value.replace(/[\0- ",;\\\u007f-\uffff]+/g, encodeURIComponent);
 	}
 
 	if (options.path) {
-		str += ';path=' + options.path;
+		str += ";path=" + options.path;
 	}
 	if (options.domain) {
-		str += ';domain=' + options.domain;
+		str += ";domain=" + options.domain;
 	}
 	if (age) {
-		str += ';expires=' + age.toGMTString();
+		str += ";expires=" + age.toGMTString();
 	}
 	if (options.secure) {
-		str += ';secure';
+		str += ";secure";
 	}
 
 	this.cookie = str;

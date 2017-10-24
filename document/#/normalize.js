@@ -1,14 +1,14 @@
-'use strict';
+"use strict";
 
-var isArrayLike        = require('es5-ext/object/is-array-like')
-  , isObject           = require('es5-ext/object/is-object')
-  , isString           = require('es5-ext/string/is-string')
-  , isIterable         = require('es6-iterator/is-iterable')
-  , forOf              = require('es6-iterator/for-of')
-  , isDocumentFragment = require('../../document-fragment/is-document-fragment')
-  , isAttr             = require('../../attr/is-attr')
-  , isNode             = require('../../node/is-node')
-  , document           = require('../valid-document')
+var isArrayLike        = require("es5-ext/object/is-array-like")
+  , isObject           = require("es5-ext/object/is-object")
+  , isString           = require("es5-ext/string/is-string")
+  , isIterable         = require("es6-iterator/is-iterable")
+  , forOf              = require("es6-iterator/for-of")
+  , isDocumentFragment = require("../../document-fragment/is-document-fragment")
+  , isAttr             = require("../../attr/is-attr")
+  , isNode             = require("../../node/is-node")
+  , document           = require("../valid-document")
 
   , forEach = Array.prototype.forEach, singular = null, multi = null;
 
@@ -33,7 +33,7 @@ var normalize = function (child) {
 	if (child == null) return;
 	if (!isNode(child)) {
 		if (isAttr(child)) throw new TypeError("Free pass of attribute nodes is not supported");
-		if (typeof child.toDOM === 'function') {
+		if (typeof child.toDOM === "function") {
 			normalize(child.toDOM(this));
 			return;
 		}

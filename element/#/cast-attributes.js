@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-var forEach       = require('es5-ext/object/for-each')
-  , element       = require('../valid-element')
-  , castAttribute = require('./cast-attribute');
+var forEach       = require("es5-ext/object/for-each")
+  , element       = require("../valid-element")
+  , castAttribute = require("./cast-attribute");
 
 module.exports = function (attrs) {
 	element(this);

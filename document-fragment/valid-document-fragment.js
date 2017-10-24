@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-var isDocumentFragment = require('./is-document-fragment');
+var isDocumentFragment = require("./is-document-fragment");
 
 module.exports = function (x) {
 	if (!isDocumentFragment(x)) {

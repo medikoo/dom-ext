@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-var isElement = require('./is-element');
+var isElement = require("./is-element");
 
 module.exports = function (x) {
 	if (!isElement(x)) {

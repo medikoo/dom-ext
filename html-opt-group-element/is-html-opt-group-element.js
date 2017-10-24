@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
-var isElement = require('../html-element/is-html-element');
+var isElement = require("../html-element/is-html-element");
 
 module.exports = function (el) {
-	return Boolean(isElement(el) && (el.nodeName.toLowerCase() === 'optgroup'));
+	return Boolean(isElement(el) && (el.nodeName.toLowerCase() === "optgroup"));
 };

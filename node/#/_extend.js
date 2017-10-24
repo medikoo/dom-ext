@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-var normalize = require('../../document/#/normalize')
+var normalize = require("../../document/#/normalize")
 
   , isArray = Array.isArray;
 

@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
 module.exports = {
-	makeElement:  require('./make-element'),
-	normalize:    require('./normalize'),
-	normalizeRaw: require('./normalize-raw')
+	makeElement: require("./make-element"),
+	normalize: require("./normalize"),
+	normalizeRaw: require("./normalize-raw")
 };

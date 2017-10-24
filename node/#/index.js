@@ -1,5 +1,5 @@
-'use strict';
+"use strict";
 
 module.exports = {
-	remove: require('./remove')
+	remove: require("./remove")
 };

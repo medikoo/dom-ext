@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
 module.exports = {
-	'#':           require('./#'),
-	isDocument:    require('./is-document'),
-	validDocument: require('./valid-document')
+	"#": require("./#"),
+	"isDocument": require("./is-document"),
+	"validDocument": require("./valid-document")
 };

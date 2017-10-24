@@ -1,5 +1,5 @@
-'use strict';
+"use strict";
 
 module.exports = {
-	extend: require('./extend')
+	extend: require("./extend")
 };

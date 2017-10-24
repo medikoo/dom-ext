@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
-var callable = require('es5-ext/object/valid-callable')
-  , value    = require('es5-ext/object/valid-value')
-  , once     = require('timers-ext/once')
-  , element  = require('../valid-html-element')
+var callable = require("es5-ext/object/valid-callable")
+  , value    = require("es5-ext/object/valid-value")
+  , once     = require("timers-ext/once")
+  , element  = require("../valid-html-element")
 
   , observerConfig = { attributes: true, childList: true, subtree: true };
 
@@ -21,22 +21,22 @@ module.exports = function (source, propertyName/*, isApplicable*/) {
 		target.style[propertyName] = sourceWindow.getComputedStyle(source)[propertyName];
 	});
 
-	// on resize
-	sourceWindow.addEventListener('resize', update, false);
+	// On resize
+	sourceWindow.addEventListener("resize", update, false);
 
-	// on DOM mutation
-	if (typeof MutationObserver === 'function') {
+	// On DOM mutation
+	if (typeof MutationObserver === "function") {
 		mutationObserver = new MutationObserver(update);
 		mutationObserver.observe(source, observerConfig);
 	}
 
-	// fallback
+	// Fallback
 	interval = setInterval(update, 500);
 
 	return {
 		update: update,
 		disconnect: function () {
-			sourceWindow.removeEventListener('resize', update, false);
+			sourceWindow.removeEventListener("resize", update, false);
 			if (mutationObserver) mutationObserver.disconnect();
 			clearInterval(interval);
 		}

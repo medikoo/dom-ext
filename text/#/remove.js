@@ -1,8 +1,10 @@
 // To be DOM4 standard
 
-'use strict';
+"use strict";
 
-var remove = require('../../node/#/_remove')
-  , text   = require('../valid-text');
+var remove = require("../../node/#/_remove")
+  , text   = require("../valid-text");
 
-module.exports = function () { remove.call(text(this)); };
+module.exports = function () {
+ remove.call(text(this));
+};

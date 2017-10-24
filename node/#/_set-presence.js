@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
-var include = require('./_include')
-  , exclude = require('./_exclude');
+var include = require("./_include")
+  , exclude = require("./_exclude");
 
 module.exports = function (isPresent) {
 	if (isPresent) include.call(this);

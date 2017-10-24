@@ -1,5 +1,5 @@
-'use strict';
+"use strict";
 
 module.exports = {
-	isAttr: require('./is-attr')
+	isAttr: require("./is-attr")
 };

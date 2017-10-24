@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
 module.exports = {
-	isHTMLOptionElement:    require('./is-html-option-element'),
-	validHTMLOptionElement: require('./valid-html-option-element')
+	isHTMLOptionElement: require("./is-html-option-element"),
+	validHTMLOptionElement: require("./valid-html-option-element")
 };

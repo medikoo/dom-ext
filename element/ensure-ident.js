@@ -1,8 +1,8 @@
 // Ensure provided string is a valid id and return it
 
-'use strict';
+"use strict";
 
-var isIdent = require('./is-ident');
+var isIdent = require("./is-ident");
 
 module.exports = function (id) {
 	if (isIdent(id)) return String(id);

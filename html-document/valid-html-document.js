@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-var isDocument = require('./is-html-document');
+var isDocument = require("./is-html-document");
 
 module.exports = function (x) {
 	if (!isDocument(x)) {

@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-var isString = require('es5-ext/string/is-string')
+var isString = require("es5-ext/string/is-string")
 
   , forEach = Array.prototype.forEach;
 

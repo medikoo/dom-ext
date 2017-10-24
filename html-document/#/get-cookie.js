@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-var document = require('../valid-html-document');
+var document = require("../valid-html-document");
 
 module.exports = function (name) {
 	var data, result;
@@ -9,8 +9,8 @@ module.exports = function (name) {
 	data = this.cookie;
 
 	result = null;
-	data.split(';').some(function (data) {
-		var i = data.indexOf('=')
+	data.split(";").some(function (data) {
+		var i = data.indexOf("=")
 		  , key = decodeURIComponent(data.slice(0, i).trim());
 
 		if (key !== name) return false;

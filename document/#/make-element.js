@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
-var extend        = require('../../element/#/extend')
-  , document      = require('../valid-document')
+var extend        = require("../../element/#/extend")
+  , document      = require("../valid-document")
 
   , slice = Array.prototype.slice;
 

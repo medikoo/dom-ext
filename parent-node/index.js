@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
 module.exports = {
-	ensure: require('./ensure'),
-	is:     require('./is')
+	ensure: require("./ensure"),
+	is: require("./is")
 };

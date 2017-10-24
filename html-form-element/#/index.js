@@ -1,5 +1,5 @@
-'use strict';
+"use strict";
 
 module.exports = {
-	autoSubmit: require('./auto-submit')
+	autoSubmit: require("./auto-submit")
 };

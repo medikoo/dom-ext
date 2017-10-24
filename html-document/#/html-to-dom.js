@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
-var value    = require('es5-ext/object/valid-value')
-  , memoize  = require('memoizee/weak-plain')
-  , document = require('../valid-html-document');
+var value    = require("es5-ext/object/valid-value")
+  , memoize  = require("memoizee/weak-plain")
+  , document = require("../valid-html-document");
 
 var getHtmlToDom = memoize(function (document) {
-	var el = document.createElement('div'), df;
+	var el = document.createElement("div"), df;
 	return function (html) {
 		el.innerHTML = html;
 		switch (el.childNodes.length) {

@@ -1,26 +1,28 @@
-'use strict';
+"use strict";
 
-var customError = require('es5-ext/error/custom')
-  , deferred    = require('deferred/deferred')
-  , image       = require('../valid-html-image-element');
+var customError = require("es5-ext/error/custom")
+  , deferred    = require("deferred/deferred")
+  , image       = require("../valid-html-image-element");
 
-module.exports = function (/* options */) {
+module.exports = function (/* Options */) {
 	var def, options, timeout;
 	if (image(this).width) return deferred(this);
 	options = arguments[0];
 	def = deferred();
-	this.addEventListener('load', function () { def.resolve(this); });
-	this.addEventListener('abort', function (e) {
-		def.reject(customError("Load aborted", 'LOAD_ABORTED', { event: e }));
+	this.addEventListener("load", function () {
+ def.resolve(this);
+});
+	this.addEventListener("abort", function (e) {
+		def.reject(customError("Load aborted", "LOAD_ABORTED", { event: e }));
 	});
-	this.addEventListener('error', function (e) {
-		def.reject(customError("Load error", 'LOAD_ERROR', { event: e }));
+	this.addEventListener("error", function (e) {
+		def.reject(customError("Load error", "LOAD_ERROR", { event: e }));
 	});
 	timeout = (options && options.timeout) >>> 0;
 	if (timeout) {
 		setTimeout(function () {
 			if (def.resolved) return;
-			def.reject(customError("Load timeout", 'LOAD_ERROR'));
+			def.reject(customError("Load timeout", "LOAD_ERROR"));
 		}, timeout);
 	}
 	return def.promise;

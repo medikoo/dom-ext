@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-var document = require('../valid-html-document');
+var document = require("../valid-html-document");
 
 module.exports = function () {
 	var data, result;
@@ -11,8 +11,8 @@ module.exports = function () {
 	result = {};
 
 	if (!data) return result;
-	data.split(';').forEach(function (data) {
-		var i = data.indexOf('=')
+	data.split(";").forEach(function (data) {
+		var i = data.indexOf("=")
 		  , key = decodeURIComponent(data.slice(0, i).trim());
 
 		if (result.hasOwnProperty(key)) return;
