@@ -1,8 +1,8 @@
 "use strict";
 
-var normalize = require("../../document/#/normalize")
+var normalize = require("../../document/#/normalize");
 
-  , isArray = Array.isArray;
+var isArray = Array.isArray;
 
 module.exports = function (child/*, …child*/) {
 	var result = normalize.apply(this.ownerDocument, arguments);
