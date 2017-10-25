@@ -6,6 +6,5 @@ var element        = require("../valid-element")
 module.exports = function (node/*, …nodes*/) {
 	var parent = element(this).parentNode;
 	if (!parent) return;
-	parent.insertBefore(mutationMethod(this.ownerDocument, arguments),
-		this.nextSibling);
+	parent.insertBefore(mutationMethod(this.ownerDocument, arguments), this.nextSibling);
 };
