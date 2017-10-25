@@ -9,10 +9,10 @@ var getHtmlToDom = memoize(function (document) {
 	return function (html) {
 		el.innerHTML = html;
 		switch (el.childNodes.length) {
-		case 0:
-			return null;
-		case 1:
-			return el.firstChild;
+			case 0:
+				return null;
+			case 1:
+				return el.firstChild;
 		}
 		df = document.createDocumentFragment();
 		while (el.firstChild) df.appendChild(el.firstChild);
