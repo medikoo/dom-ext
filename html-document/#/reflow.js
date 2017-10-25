@@ -2,14 +2,16 @@
 
 var memoize  = require("memoizee/plain")
   , addStyle = require("./add-style")
-  , document = require("../valid-html-document")
+  , document = require("../valid-html-document");
 
-  , setStyle, className = "reflow-force";
+var className = "reflow-force";
 
-setStyle = memoize(function (document) {
-	addStyle.call(document, "body." + className +
-		" { background-color: transparent; }");
-}, { normalizer: require("memoizee/normalizers/get-1")() });
+var setStyle = memoize(
+	function (document) {
+		addStyle.call(document, "body." + className + " { background-color: transparent; }");
+	},
+	{ normalizer: require("memoizee/normalizers/get-1")() }
+);
 
 module.exports = function () {
 	var body, cache;
@@ -21,6 +23,6 @@ module.exports = function () {
 	body.classList.add(className);
 	body.style.display = cache;
 	setTimeout(function () {
- body.classList.remove(className);
-}, 0);
+		body.classList.remove(className);
+	}, 0);
 };
