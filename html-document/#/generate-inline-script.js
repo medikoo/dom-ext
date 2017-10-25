@@ -3,7 +3,7 @@
 var document   = require("../valid-html-document")
   , makeScript = require("../generate-inline-script-text");
 
-module.exports = function (fn/*, …localVars*/) {
+module.exports = function (fnIgnored/*, …localVars*/) {
 	var script;
 	document(this);
 	script = this.createElement("script");
