@@ -11,8 +11,15 @@ var customError   = require("es5-ext/error/custom")
   , imgPromise    = require("../../html-image-element/#/promise");
 
 module.exports = function (/* Options */) {
-	var wheelEventName, image, wrapDim, imageDim, onMove, zoom = 1, init
-	  , options = Object(arguments[0]), checkAndInit;
+	var wheelEventName
+	  , image
+	  , wrapDim
+	  , imageDim
+	  , onMove
+	  , zoom = 1
+	  , init
+	  , options = Object(arguments[0])
+	  , checkAndInit;
 
 	if (element(this).onmousewheel === undefined) {
 		if (this.onwheel === undefined) {
@@ -48,62 +55,81 @@ module.exports = function (/* Options */) {
 		this.style.position = "relative";
 		this.style.cursor = "crosshair";
 
-		this.addEventListener("mouseover", function () {
-			wrapDim = getDimensions.call(this);
-			zoom = 1;
-			image.style.position = "absolute";
-			image.style.top = "0";
-			image.style.left = "0";
-			image.style.width = (imageDim.width * zoom) + "px";
-			image.style.height = (imageDim.height * zoom) + "px";
-			image.style.maxWidth = "none";
-			image.style.maxHeight = "none";
-		}, false);
+		this.addEventListener(
+			"mouseover",
+			function () {
+				wrapDim = getDimensions.call(this);
+				zoom = 1;
+				image.style.position = "absolute";
+				image.style.top = "0";
+				image.style.left = "0";
+				image.style.width = imageDim.width * zoom + "px";
+				image.style.height = imageDim.height * zoom + "px";
+				image.style.maxWidth = "none";
+				image.style.maxHeight = "none";
+			},
+			false
+		);
 
-		this.addEventListener("mousemove", onMove = function (e) {
-			var pos = getPosition.call(this)
-			  , mX = e.pageX - pos.left
-			  , mY = e.pageY - pos.top
-			  , ratioX = mX / wrapDim.width
-			  , ratioY = mY / wrapDim.height
-			  , iX = mX - imageDim.width * zoom * ratioX
-			  , iY = mY - imageDim.height * zoom * ratioY;
+		this.addEventListener(
+			"mousemove",
+			onMove = function (e) {
+				var pos = getPosition.call(this)
+				  , mX = e.pageX - pos.left
+				  , mY = e.pageY - pos.top
+				  , ratioX = mX / wrapDim.width
+				  , ratioY = mY / wrapDim.height
+				  , iX = mX - imageDim.width * zoom * ratioX
+				  , iY = mY - imageDim.height * zoom * ratioY;
 
-			image.style.left = iX + "px";
-			image.style.top = iY + "px";
-		}, false);
+				image.style.left = iX + "px";
+				image.style.top = iY + "px";
+			},
+			false
+		);
 
-		this.addEventListener("mouseout", function (e) {
-			image.style.position = "";
-			image.style.top = "";
-			image.style.left = "";
-			image.style.width = "";
-			image.style.height = "";
-			image.style.maxWidth = "";
-			image.style.maxHeight = "";
-		}, false);
+		this.addEventListener(
+			"mouseout",
+			function (e) {
+				image.style.position = "";
+				image.style.top = "";
+				image.style.left = "";
+				image.style.width = "";
+				image.style.height = "";
+				image.style.maxWidth = "";
+				image.style.maxHeight = "";
+			},
+			false
+		);
 
-		this.addEventListener(wheelEventName, function (e) {
-			var deltaY = 0, delta;
+		this.addEventListener(
+			wheelEventName,
+			function (e) {
+				var deltaY = 0, delta;
 
-			e.preventDefault();
+				e.preventDefault();
 
-			if (e.deltaY) deltaY = e.deltaY;
-			else if (e.wheelDelta) deltaY = -e.wheelDelta;
+				if (e.deltaY) deltaY = e.deltaY;
+				else if (e.wheelDelta) deltaY = -e.wheelDelta;
 
-			delta = deltaY / 1200;
+				delta = deltaY / 1200;
 
-			if (((zoom + delta) <= 1) && ((zoom + delta) > 0) &&
-					(((imageDim.width * (zoom + delta)) > wrapDim.width) ||
-					((imageDim.height * (zoom + delta)) > wrapDim.height))) {
-				zoom += delta;
+				if (
+					zoom + delta <= 1 &&
+					zoom + delta > 0 &&
+					(imageDim.width * (zoom + delta) > wrapDim.width ||
+						imageDim.height * (zoom + delta) > wrapDim.height)
+				) {
+					zoom += delta;
 
-				image.style.width = (imageDim.width * zoom) + "px";
-				image.style.height = (imageDim.height * zoom) + "px";
-			}
+					image.style.width = imageDim.width * zoom + "px";
+					image.style.height = imageDim.height * zoom + "px";
+				}
 
-			onMove.call(this, e);
-		}, false);
+				onMove.call(this, e);
+			},
+			false
+		);
 	}.bind(this);
 
 	checkAndInit = function () {
@@ -115,8 +141,11 @@ module.exports = function (/* Options */) {
 		imgPromise.call(image).done(checkAndInit, function (err) {
 			if (err.code === "LOAD_ERROR") {
 				console.error(err.stack);
-				console.error("Cannot load image " + JSON.stringify(image.src) +
-					" due to not reliable network connection");
+				console.error(
+					"Cannot load image " +
+						JSON.stringify(image.src) +
+						" due to not reliable network connection"
+				);
 				return;
 			}
 			if (err.code === "LOAD_ABORTED") {
