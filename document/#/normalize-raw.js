@@ -8,9 +8,9 @@ var isArrayLike        = require("es5-ext/object/is-array-like")
   , isDocumentFragment = require("../../document-fragment/is-document-fragment")
   , isAttr             = require("../../attr/is-attr")
   , isNode             = require("../../node/is-node")
-  , document           = require("../valid-document")
+  , document           = require("../valid-document");
 
-  , forEach = Array.prototype.forEach, singular = null, multi = null;
+var forEach = Array.prototype.forEach, singular = null, multi = null;
 
 var normalizeItem = function (node) {
 	var index;
