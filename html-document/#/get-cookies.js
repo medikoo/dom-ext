@@ -12,8 +12,7 @@ module.exports = function () {
 
 	if (!data) return result;
 	data.split(";").forEach(function (data) {
-		var i = data.indexOf("=")
-		  , key = decodeURIComponent(data.slice(0, i).trim());
+		var i = data.indexOf("="), key = decodeURIComponent(data.slice(0, i).trim());
 
 		if (result.hasOwnProperty(key)) return;
 		result[key] = decodeURIComponent(data.slice(i + 1).trim());
