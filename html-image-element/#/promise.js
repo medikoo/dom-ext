@@ -10,8 +10,8 @@ module.exports = function (/* Options */) {
 	options = arguments[0];
 	def = deferred();
 	this.addEventListener("load", function () {
- def.resolve(this);
-});
+		def.resolve(this);
+	});
 	this.addEventListener("abort", function (e) {
 		def.reject(customError("Load aborted", "LOAD_ABORTED", { event: e }));
 	});
