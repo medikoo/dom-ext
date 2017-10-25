@@ -2,7 +2,7 @@
 
 var isImage = require("./is-html-image-element");
 
-module.exports = function (x) {
-	if (!isImage(x)) throw new TypeError(x + " is not a HTMLImage");
-	return x;
+module.exports = function (value) {
+	if (!isImage(value)) throw new TypeError(value + " is not a HTMLImage");
+	return value;
 };

@@ -1,8 +1,8 @@
 "use strict";
 
-var memoize  = require("memoizee/plain")
-  , addStyle = require("./add-style")
-  , document = require("../valid-html-document");
+var memoize        = require("memoizee/plain")
+  , addStyle       = require("./add-style")
+  , ensureDocument = require("../valid-html-document");
 
 var className = "reflow-force";
 
@@ -15,7 +15,7 @@ var setStyle = memoize(
 
 module.exports = function () {
 	var body, cache;
-	if (!document(this).body) return; // No body, no reflow that can be done
+	if (!ensureDocument(this).body) return; // No body, no reflow that can be done
 	setStyle(this);
 	body = this.body;
 	cache = body.style.display;

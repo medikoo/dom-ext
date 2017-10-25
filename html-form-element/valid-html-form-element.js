@@ -2,7 +2,7 @@
 
 var isForm = require("./is-html-form-element");
 
-module.exports = function (x) {
-	if (!isForm(x)) throw new TypeError(x + " is not a HTMLForm");
-	return x;
+module.exports = function (value) {
+	if (!isForm(value)) throw new TypeError(value + " is not a HTMLForm");
+	return value;
 };

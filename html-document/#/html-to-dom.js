@@ -1,8 +1,8 @@
 "use strict";
 
-var value    = require("es5-ext/object/valid-value")
-  , memoize  = require("memoizee/weak-plain")
-  , document = require("../valid-html-document");
+var value          = require("es5-ext/object/valid-value")
+  , memoize        = require("memoizee/weak-plain")
+  , ensureDocument = require("../valid-html-document");
 
 var getHtmlToDom = memoize(function (document) {
 	var el = document.createElement("div"), df;
@@ -13,6 +13,7 @@ var getHtmlToDom = memoize(function (document) {
 				return null;
 			case 1:
 				return el.firstChild;
+			default:
 		}
 		df = document.createDocumentFragment();
 		while (el.firstChild) df.appendChild(el.firstChild);
@@ -21,5 +22,5 @@ var getHtmlToDom = memoize(function (document) {
 });
 
 module.exports = function (html) {
-	return getHtmlToDom(document(this))(value(html));
+	return getHtmlToDom(ensureDocument(this))(value(html));
 };

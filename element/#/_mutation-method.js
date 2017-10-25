@@ -10,9 +10,9 @@ module.exports = function (document, args) {
 		node = document.createDocumentFragment();
 		forEach.call(
 			args,
-			function (node) {
-				if (isString(node)) node = document.createTextNode(node);
-				this.appendChild(node);
+			function (nodeArg) {
+				if (isString(nodeArg)) nodeArg = document.createTextNode(nodeArg);
+				this.appendChild(nodeArg);
 			},
 			node
 		);

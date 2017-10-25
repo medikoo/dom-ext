@@ -2,6 +2,7 @@
 
 var isArrayLike        = require("es5-ext/object/is-array-like")
   , isObject           = require("es5-ext/object/is-object")
+  , isValue            = require("es5-ext/object/is-value")
   , isString           = require("es5-ext/string/is-string")
   , isIterable         = require("es6-iterator/is-iterable")
   , forOf              = require("es6-iterator/for-of")
@@ -30,7 +31,7 @@ var normalizeItem = function (node) {
 };
 
 var normalize = function (child) {
-	if (child == null) return;
+	if (!isValue(child)) return;
 	if (!isNode(child)) {
 		if (isAttr(child)) throw new TypeError("Free pass of attribute nodes is not supported");
 		if (typeof child.toDOM === "function") {
@@ -59,7 +60,7 @@ var normalize = function (child) {
 	normalizeItem(child);
 };
 
-module.exports = function self(child/*, …childn*/) {
+module.exports = function (childIgnored/*, …childn*/) {
 	var result, cacheMulti = multi, cacheSingular = singular;
 	multi = singular = null;
 	forEach.call(arguments, normalize, document(this));

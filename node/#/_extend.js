@@ -4,7 +4,7 @@ var normalize = require("../../document/#/normalize");
 
 var isArray = Array.isArray;
 
-module.exports = function (child/*, …child*/) {
+module.exports = function (childIgnored/*, …child*/) {
 	var result = normalize.apply(this.ownerDocument, arguments);
 	if (!result) return this;
 	if (isArray(result)) result.forEach(this.appendChild, this);

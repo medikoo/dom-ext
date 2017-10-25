@@ -1,10 +1,10 @@
 "use strict";
 
-var forEach       = require("es5-ext/object/for-each")
-  , isPlainObject = require("es5-ext/object/is-plain-object")
-  , camelToHyphen = require("es5-ext/string/#/camel-to-hyphen")
-  , memoize       = require("memoizee/plain")
-  , document      = require("../valid-html-document");
+var forEach        = require("es5-ext/object/for-each")
+  , isPlainObject  = require("es5-ext/object/is-plain-object")
+  , camelToHyphen  = require("es5-ext/string/#/camel-to-hyphen")
+  , memoize        = require("memoizee/plain")
+  , ensureDocument = require("../valid-html-document");
 
 var getStyleEl = memoize(
 	function (document) {
@@ -15,11 +15,11 @@ var getStyleEl = memoize(
 	{ normalizer: require("memoizee/normalizers/get-1")() }
 );
 
-var stringify = function (obj) {
+var stringify = function (declarations) {
 	var str = [];
-	forEach(obj, function (value, key) {
-		str.push(key + " {");
-		forEach(value, function (value, key) {
+	forEach(declarations, function (properties, selector) {
+		str.push(selector + " {");
+		forEach(properties, function (value, key) {
 			str.push("\t" + camelToHyphen.call(key) + ": " + value + ";");
 		});
 		str.push("}");
@@ -28,7 +28,7 @@ var stringify = function (obj) {
 };
 
 module.exports = function (rules) {
-	document(this);
+	ensureDocument(this);
 	if (isPlainObject(rules)) rules = stringify(rules);
 	getStyleEl(this).appendChild(this.createTextNode(rules + "\n"));
 };

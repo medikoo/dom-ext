@@ -2,9 +2,9 @@
 
 var isDocument = require("./is-html-document");
 
-module.exports = function (x) {
-	if (!isDocument(x)) {
-		throw new TypeError(x + " is not a HTMLDocument");
+module.exports = function (value) {
+	if (!isDocument(value)) {
+		throw new TypeError(value + " is not a HTMLDocument");
 	}
-	return x;
+	return value;
 };

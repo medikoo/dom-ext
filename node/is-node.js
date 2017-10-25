@@ -1,11 +1,11 @@
 "use strict";
 
-module.exports = function (x) {
+module.exports = function (value) {
 	return (
-		(x &&
-			typeof x.nodeType === "number" &&
-			x.nodeType !== 2 &&
-			typeof x.nodeName === "string") ||
+		(value &&
+			typeof value.nodeType === "number" &&
+			value.nodeType !== 2 &&
+			typeof value.nodeName === "string") ||
 		false
 	);
 };

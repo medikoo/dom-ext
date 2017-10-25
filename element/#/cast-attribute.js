@@ -1,11 +1,12 @@
 "use strict";
 
-var compact      = require("es5-ext/array/#/compact")
-  , flatten      = require("es5-ext/array/#/flatten")
-  , isCallable   = require("es5-ext/object/is-callable")
-  , isObservable = require("observable-value/is-observable-value")
-  , isAttr       = require("../../attr/is-attr")
-  , element      = require("../valid-element");
+var compact       = require("es5-ext/array/#/compact")
+  , flatten       = require("es5-ext/array/#/flatten")
+  , isCallable    = require("es5-ext/object/is-callable")
+  , isValue       = require("es5-ext/object/is-value")
+  , isObservable  = require("observable-value/is-observable-value")
+  , isAttr        = require("../../attr/is-attr")
+  , ensureElement = require("../valid-element");
 
 var isArray = Array.isArray, map = Array.prototype.map;
 
@@ -46,8 +47,8 @@ var resolveArray = function (element, name, arr) {
 };
 
 module.exports = function (name, value) {
-	element(this);
-	if (value == null) {
+	ensureElement(this);
+	if (!isValue(value)) {
 		this[name] = null;
 		this.removeAttribute(name);
 	} else if (typeof value === "string") {

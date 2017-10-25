@@ -1,3 +1,6 @@
+/* global console */
+/* eslint no-console: "off" */
+
 // Credit: Fixed and cleaned version of @melux's demo-zoom:
 // https://gist.github.com/melux/50c0f994bfa1caf2c1a0
 
@@ -90,7 +93,7 @@ module.exports = function (/* Options */) {
 
 		this.addEventListener(
 			"mouseout",
-			function (e) {
+			function () {
 				image.style.position = "";
 				image.style.top = "";
 				image.style.left = "";

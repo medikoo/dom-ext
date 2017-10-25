@@ -3,7 +3,7 @@
 var startsWith = require("es5-ext/string/#/starts-with")
   , endsWith   = require("es5-ext/string/#/ends-with");
 
-var nonAsciiRe = /[\0-\/:-@\[-`{-\uffff]/g
+var nonAsciiRe = /[\0-/:-@[-`{-\uffff]/g
   , dashRe = /-{2,}/g
   , startsWithDigit = RegExp.prototype.test.bind(/^\d/);
 

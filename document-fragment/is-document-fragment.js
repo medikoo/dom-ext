@@ -1,5 +1,5 @@
 "use strict";
 
-module.exports = function (x) {
-	return (x && x.nodeType === 11 && x.nodeName === "#document-fragment") || false;
+module.exports = function (value) {
+	return (value && value.nodeType === 11 && value.nodeName === "#document-fragment") || false;
 };

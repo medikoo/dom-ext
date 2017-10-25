@@ -48,8 +48,8 @@ module.exports = function (name/*, options */) {
 	  , inputOptions = Object(arguments[1])
 	  , options = assign({}, defaultOptions, inputOptions);
 	element(this);
-	if (mouseEvents.hasOwnProperty(name)) type = "MouseEvents";
-	else if (htmlEvents.hasOwnProperty(name)) type = "HTMLEvents";
+	if (hasOwnProperty.call(mouseEvents, name)) type = "MouseEvents";
+	else if (hasOwnProperty.call(htmlEvents, name)) type = "HTMLEvents";
 	else throw new TypeError("Unsupported event");
 
 	event = this.ownerDocument.createEvent(type);
@@ -74,9 +74,9 @@ module.exports = function (name/*, options */) {
 			this
 		);
 	}
-	forEach(inputOptions, function (value, name) {
-		if (defaultOptions.hasOwnProperty(name)) return;
-		event[name] = value;
+	forEach(inputOptions, function (value, optionName) {
+		if (hasOwnProperty.call(defaultOptions, optionName)) return;
+		event[optionName] = value;
 	});
 	this.dispatchEvent(event);
 };

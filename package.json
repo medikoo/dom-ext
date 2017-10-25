@@ -23,13 +23,20 @@
   },
   "devDependencies": {
     "eslint": "^4.9",
-    "eslint-config-medikoo-es5": "^1.4.4",    
+    "eslint-config-medikoo-es5": "^1.4.5",
     "jsdom": "^11.3",
     "tad": "^0.2.3"
   },
   "eslintConfig": {
     "extends": "medikoo-es5",
-    "root": true
+    "root": true,
+    "globals": {
+      "clearInterval": true,
+      "clearTimeout": true,
+      "MutationObserver": true,
+      "setInterval": true,
+      "setTimeout": true
+    }
   },
   "scripts": {
     "lint": "eslint .",

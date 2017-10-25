@@ -3,9 +3,11 @@
 
 "use strict";
 
+var isValue = require("es5-ext/object/is-value");
+
 var isIdent = RegExp.prototype.test.bind(/^[a-zA-Z][0-9a-zA-Z\-_:.]*$/);
 
 module.exports = function (id) {
-	if (id == null) return false;
+	if (!isValue(id)) return false;
 	return isIdent(id);
 };

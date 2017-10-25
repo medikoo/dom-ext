@@ -2,7 +2,7 @@
 
 var isText = require("./is-text");
 
-module.exports = function (x) {
-	if (!isText(x)) throw new TypeError(x + " is not a DOM Text node");
-	return x;
+module.exports = function (value) {
+	if (!isText(value)) throw new TypeError(value + " is not a DOM Text node");
+	return value;
 };

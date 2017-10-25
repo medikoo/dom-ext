@@ -13,7 +13,7 @@ module.exports = function (name, value/*, options*/) {
 	if (value === undefined) options.expires = -1;
 	else value = String(value);
 
-	if (!options.hasOwnProperty("path")) options.path = "/";
+	if (!hasOwnProperty.call(options, "path")) options.path = "/";
 
 	age = options.expires;
 	age = !isNaN(age) && age ? new Date(now() + age * 1000) : null;

@@ -10,9 +10,11 @@ var aFrom         = require("es5-ext/array/from")
   , isPlainObject = require("es5-ext/object/is-plain-object")
   , toArray       = require("es5-ext/object/to-array")
   , isRegExp      = require("es5-ext/reg-exp/is-reg-exp")
-  , serialize     = require("es5-ext/object/serialize")
+  , serialize     = require("es5-ext/object/serialize");
 
-  , isArray = Array.isArray, slice = Array.prototype.slice, stringify = JSON.stringify
+var isArray = Array.isArray
+  , slice = Array.prototype.slice
+  , stringify = JSON.stringify
   , convertValue;
 
 var keyValueToString = function (value, key) {
@@ -30,9 +32,13 @@ convertValue = function (value, ancestors) {
 	ancestors = aFrom(ancestors);
 	ancestors.push(value);
 	if (isArray(value)) {
-		return "[" + value.map(function (value) {
- return convertValue(value, ancestors);
-}) + "]";
+		return (
+			"[" +
+			value.map(function (item) {
+				return convertValue(item, ancestors);
+			}) +
+			"]"
+		);
 	}
 	if (!isPlainObject(value)) {
 		throw customError(value + " cannot be serialized", "UNSERIALIZABLE_VALUE");
@@ -43,8 +49,17 @@ convertValue = function (value, ancestors) {
 module.exports = function (fn/*, …localVars*/) {
 	var data = toTokens.call(fn), localVars = slice.call(arguments, 1);
 
-	return "(function (" + data.args + ") { 'use strict';" + data.body + "}(" +
-		localVars.map(function (value) {
- return convertValue(value, []);
-}).join(",") + "));";
+	return (
+		"(function (" +
+		data.args +
+		") { 'use strict';" +
+		data.body +
+		"}(" +
+		localVars
+			.map(function (value) {
+				return convertValue(value, []);
+			})
+			.join(",") +
+		"));"
+	);
 };

@@ -1,12 +1,12 @@
 "use strict";
 
-module.exports = function (x) {
+module.exports = function (value) {
 	return (
-		(x &&
-			typeof x.name === "string" &&
-			typeof x.value === "string" &&
-			(typeof x.localName === "string" || x.localName === null) &&
-			(x.nodeType === 2 || !x.nodeType)) ||
+		(value &&
+			typeof value.name === "string" &&
+			typeof value.value === "string" &&
+			(typeof value.localName === "string" || value.localName === null) &&
+			(value.nodeType === 2 || !value.nodeType)) ||
 		false
 	);
 };

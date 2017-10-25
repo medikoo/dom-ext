@@ -1,0 +1,9 @@
+{
+	"globals": {
+		"document": true
+	},
+	"rules": {
+		"id-length": "off",
+		"no-empty-function": "off"
+	}
+}

@@ -2,9 +2,9 @@
 
 var isDocument = require("./is-document");
 
-module.exports = function (x) {
-	if (!isDocument(x)) {
-		throw new TypeError(x + " is not a DOM Document");
+module.exports = function (value) {
+	if (!isDocument(value)) {
+		throw new TypeError(value + " is not a DOM Document");
 	}
-	return x;
+	return value;
 };

@@ -1,10 +1,11 @@
 "use strict";
 
-var customError = require("es5-ext/error/custom")
-  , deferred    = require("deferred/deferred")
-  , image       = require("../valid-html-image-element");
+var customError   = require("es5-ext/error/custom")
+  , ensureTimeout = require("timers-ext/valid-timeout")
+  , deferred      = require("deferred/deferred")
+  , image         = require("../valid-html-image-element");
 
-module.exports = function (/* Options */) {
+module.exports = function (/* options */) {
 	var def, options, timeout;
 	if (image(this).width) return deferred(this);
 	options = arguments[0];
@@ -18,7 +19,7 @@ module.exports = function (/* Options */) {
 	this.addEventListener("error", function (e) {
 		def.reject(customError("Load error", "LOAD_ERROR", { event: e }));
 	});
-	timeout = (options && options.timeout) >>> 0;
+	timeout = ensureTimeout(options && options.timeout);
 	if (timeout) {
 		setTimeout(function () {
 			if (def.resolved) return;
