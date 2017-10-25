@@ -5,7 +5,7 @@ var callable      = require("es5-ext/object/valid-callable")
   , valid         = require("../valid-html-form-element");
 
 module.exports = function (filter) {
-	valid(this) && ((filter == null) || callable(filter));
+	valid(this) && (filter == null || callable(filter));
 	this.addEventListener("change", function (e) {
 		if (filter && !filter(e)) return;
 		setTimeout(dispatchEvent.bind(this, "submit"), 0);
