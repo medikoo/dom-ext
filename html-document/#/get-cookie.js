@@ -10,8 +10,7 @@ module.exports = function (name) {
 
 	result = null;
 	data.split(";").some(function (data) {
-		var i = data.indexOf("=")
-		  , key = decodeURIComponent(data.slice(0, i).trim());
+		var i = data.indexOf("="), key = decodeURIComponent(data.slice(0, i).trim());
 
 		if (key !== name) return false;
 		result = decodeURIComponent(data.slice(i + 1));
