@@ -1,8 +1,8 @@
 "use strict";
 
-var document = require("../valid-html-document")
+var document = require("../valid-html-document");
 
-  , now = Date.now;
+var now = Date.now;
 
 module.exports = function (name, value/*, options*/) {
 	var options, str, age;
