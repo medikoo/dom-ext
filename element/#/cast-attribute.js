@@ -5,25 +5,39 @@ var compact      = require("es5-ext/array/#/compact")
   , isCallable   = require("es5-ext/object/is-callable")
   , isObservable = require("observable-value/is-observable-value")
   , isAttr       = require("../../attr/is-attr")
-  , element      = require("../valid-element")
+  , element      = require("../valid-element");
 
-  , isArray = Array.isArray, map = Array.prototype.map
-  , resolveObservable = function (val) {
- return isObservable(val) ? val.value : val;
+var isArray = Array.isArray, map = Array.prototype.map;
+
+var resolveObservable = function (val) {
+	return isObservable(val) ? val.value : val;
 };
 
 var resolveArray = function (element, name, arr) {
 	var onUpdate;
 	arr = compact.call(arr);
-	if (!arr.some(function (el) {
- return isObservable(el);
-})) {
-		element.setAttribute(name, compact.call(flatten.call(arr)).map(String).join(" "));
+	if (
+		!arr.some(function (el) {
+			return isObservable(el);
+		})
+	) {
+		element.setAttribute(
+			name,
+			compact
+				.call(flatten.call(arr))
+				.map(String)
+				.join(" ")
+		);
 		return;
 	}
 	onUpdate = function () {
-		element.setAttribute(name,
-			compact.call(flatten.call(map.call(arr, resolveObservable))).map(String).join(" "));
+		element.setAttribute(
+			name,
+			compact
+				.call(flatten.call(map.call(arr, resolveObservable)))
+				.map(String)
+				.join(" ")
+		);
 	};
 	arr.forEach(function (value) {
 		if (isObservable(value)) value.on("change", onUpdate);
