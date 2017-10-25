@@ -3,13 +3,12 @@
 var callable = require("es5-ext/object/valid-callable")
   , value    = require("es5-ext/object/valid-value")
   , once     = require("timers-ext/once")
-  , element  = require("../valid-html-element")
+  , element  = require("../valid-html-element");
 
-  , observerConfig = { attributes: true, childList: true, subtree: true };
+var observerConfig = { attributes: true, childList: true, subtree: true };
 
 module.exports = function (source, propertyName/*, isApplicable*/) {
-	var update, sourceWindow, target, mutationObserver, interval
-	  , isApplicable = arguments[2];
+	var update, sourceWindow, target, mutationObserver, interval, isApplicable = arguments[2];
 
 	target = element(this);
 	element(source);
