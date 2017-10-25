@@ -6,7 +6,9 @@
 
 "use strict";
 
-var customError   = require("es5-ext/error/custom")
+var isValue       = require("es5-ext/object/is-value")
+  , customError   = require("es5-ext/error/custom")
+  , ensureTimeout = require("timers-ext/valid-timeout")
   , element       = require("../valid-html-element")
   , getDimensions = require("./get-dimensions")
   , getPosition   = require("./get-position")
@@ -22,6 +24,7 @@ module.exports = function (/* Options */) {
 	  , zoom = 1
 	  , init
 	  , options = Object(arguments[0])
+	  , initTimeout = isValue(options.initTimeout) ? ensureTimeout(options.initTimeout) : null
 	  , checkAndInit;
 
 	if (element(this).onmousewheel === undefined) {
@@ -135,9 +138,14 @@ module.exports = function (/* Options */) {
 		);
 	}.bind(this);
 
+	var startTime = Date.now();
 	checkAndInit = function () {
-		if (this.offsetWidth && this.offsetHeight && (options.width || image.naturalWidth)) init();
-		else setTimeout(checkAndInit, 200);
+		if (this.offsetWidth && this.offsetHeight && (options.width || image.naturalWidth)) {
+			init();
+			return;
+		}
+		if (isValue(initTimeout) && Date.now() - startTime > initTimeout) return;
+		setTimeout(checkAndInit, 200);
 	}.bind(this);
 
 	if (isImage(image)) {
